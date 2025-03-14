@@ -1,0 +1,29 @@
+module GTK
+  module Easing
+    def self.spline: (Integer start_tick, Integer current_tick, Integer duration, Array[Array[Numeric]] spline) -> Numeric
+
+    def self.smooth_start:
+      (initial: Numeric, final: Numeric, perc: Numeric, power: Integer) -> void
+      | (start_at: Integer, end_at: Integer, tick_count: Integer, power: Integer) -> void
+      | (start_at: Integer, duration: Integer, tick_count: Integer, power: Integer) -> void
+
+    def self.smooth_stop:
+      (initial: Numeric, final: Numeric, perc: Numeric, power: Integer) -> void
+      | (start_at: Integer, end_at: Integer, tick_count: Integer, power: Integer) -> void
+      | (start_at: Integer, duration: Integer, tick_count: Integer, power: Integer) -> void
+
+    def self.smooth_step:
+      (initial: Numeric, final: Numeric, perc: Numeric, power: Integer) -> void
+      | (start_at: Integer, end_at: Integer, tick_count: Integer, power: Integer) -> void
+      | (start_at: Integer, duration: Integer, tick_count: Integer, power: Integer) -> void
+
+    def self.mix: (Numeric a, Numeric b, Numeric perc) -> Numeric
+
+    def self.ease: (
+        Integer start_tick,
+        Integer current_tick,
+        Integer duration,
+        *:identity | :flip | :quad | :cube | :quart | :quint | Symbol | ^(Numeric, Numeric, Numeric) -> Numeric definitions
+      ) -> Numeric
+  end
+end

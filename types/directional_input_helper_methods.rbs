@@ -1,0 +1,14 @@
+module GTK
+  module DirectionalInputHelperMethods
+    type directional_value = -1 | 0 | 1
+    type direction_vector = Geometry::vector2
+
+    def left_right: () -> directional_value
+
+    def up_down: () -> directional_value
+
+    def directional_vector: () -> direction_vector?
+
+    def directional_angle: () -> Numeric?
+  end
+end

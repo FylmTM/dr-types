@@ -1,0 +1,8 @@
+module Zlib
+  def compress: (String value) -> untyped
+
+  def uncompress: (untyped value) -> String
+
+  alias deflate compress
+  alias inflate uncompress
+end

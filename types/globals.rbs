@@ -1,0 +1,22 @@
+Kernel: singleton(GTK::Kernel)
+Easing: singleton(GTK::Easing)
+Geometry: singleton(GTK::Geometry)
+Grid: GTK::Grid
+Layout: GTK::Layout
+
+$gtk: GTK::Runtime
+$args: GTK::Args
+$inputs: GTK::Inputs
+$outputs: GTK::Outputs
+$geometry: singleton(GTK::Geometry)
+$grid: GTK::Grid
+
+module Entrypoint
+  def self.tick: (GTK::Args) -> void
+
+  def self.boot: (GTK::Args) -> void
+
+  def self.reset: (GTK::Args) -> void
+
+  def self.shutdown: (GTK::Args) -> void
+end

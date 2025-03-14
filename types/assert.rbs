@@ -1,0 +1,17 @@
+module GTK
+  class Assert
+    def ok!: () -> bool
+
+    def true!: (bool value, ?String? message) -> void
+
+    def false!: (bool value, ?String? message) -> void
+
+    def equal!: [T] (T actual, T expected, ?String? message) -> void
+
+    def not_equal!: [T] (T actual, T expected, ?String? message) -> void
+
+    def nil!: (untyped value, ?String? message) -> void
+    
+    def assertion_error!: (String message) -> void
+  end
+end

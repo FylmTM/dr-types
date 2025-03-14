@@ -1,0 +1,99 @@
+module GTK
+  class Log
+    type log_subsystem = Symbol | String | nil
+
+    def self.write_to_log_and_puts: (*String args) -> (nil | String)
+
+    def self.write_to_log_and_print: (*String args) -> (nil | String)
+
+    def self.puts_important: (*String args, ?message_code: String?) -> (nil | String)
+
+    def self.puts: (*String args) -> String
+
+    def self.multiline?: (*String args) -> bool
+
+    def self.join_lines: (String | Array[String] args) -> String
+
+    def self.headline: (String name) { () -> String } -> String
+
+    def self.dynamic_block: () { () -> String } -> String
+
+    def self.puts_error: (*String args) -> String
+
+    def self.puts_info: (*String args) -> String
+
+    def self.reset: () -> nil
+
+    def self.puts_once: (*String ids, String message) -> (nil | String)
+
+    def self.puts_once_important: (*String ids, String message) -> (nil | String)
+
+    def self.puts_once_info: (*String ids, String message) -> (nil | String)
+
+    def self.print: (*String args) -> String
+  end
+end
+
+class Object
+  def log_print: (*String args) -> String
+
+  def log_important: (*String args) -> (nil | String)
+
+  def log: (*String args) -> String
+
+  def log_spam: (String str, ?GTK::Log::log_subsystem subsystem) -> String
+
+  def log_debug: (String str, ?GTK::Log::log_subsystem subsystem) -> String
+
+  def log_info: (String str, ?GTK::Log::log_subsystem subsystem) -> String
+              | (*String args) -> String
+
+  def log_warn: (String str, ?GTK::Log::log_subsystem subsystem) -> String
+
+  def log_error: (String str, ?GTK::Log::log_subsystem subsystem) -> String
+               | (*String args) -> String
+
+  def log_unfiltered: (String str, ?GTK::Log::log_subsystem subsystem) -> String
+
+  def log_with_color: (String xterm_escape_code, *String args) -> String
+
+  def log_reset_color: () -> String
+
+  def log_black: (*String args) -> String
+
+  def log_red: (*String args) -> String
+
+  def log_green: (*String args) -> String
+
+  def log_yellow: (*String args) -> String
+
+  def log_blue: (*String args) -> String
+
+  def log_magenta: (*String args) -> String
+
+  def log_cyan: (*String args) -> String
+
+  def log_white: (*String args) -> String
+
+  def log_bright_black: (*String args) -> String
+
+  def log_bright_red: (*String args) -> String
+
+  def log_bright_green: (*String args) -> String
+
+  def log_bright_yellow: (*String args) -> String
+
+  def log_bright_blue: (*String args) -> String
+
+  def log_bright_magenta: (*String args) -> String
+
+  def log_bright_cyan: (*String args) -> String
+
+  def log_bright_white: (*String args) -> String
+
+  def log_once: (*String ids, String message) -> (nil | String)
+
+  def log_once_important: (*String ids, String message) -> (nil | String)
+
+  def log_once_info: (*String ids, String message) -> (nil | String)
+end

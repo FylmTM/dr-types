@@ -1,0 +1,45 @@
+module GTK
+  module Fn
+    def add: (*Numeric | nil) -> (Numeric | nil)
+
+    def +: (*Numeric | nil) -> (Numeric | nil)
+
+    def sub: (*Numeric | nil) -> (Numeric | nil)
+
+    def -: (*Numeric | nil) -> (Numeric | nil)
+
+    def div: (*Numeric | nil) -> (Numeric | nil)
+
+    def /: (*Numeric | nil) -> (Numeric | nil)
+
+    def idiv: (*Numeric | nil) -> (Numeric | nil)
+
+    def mul: (*Numeric | nil) -> (Numeric | nil)
+
+    def *: (*Numeric | nil) -> (Numeric | nil)
+
+    def acopy: [T] (Array[T] array) -> Array[T]
+
+    def alength: [T] (Array[T] array) -> Integer
+
+    def amap: [T, R] (Array[T] array, ^(T element) -> R f) -> Array[R]
+
+    def areduce: [T, R] (Array[T] array, R result, ^(Integer i, T element) -> R f) -> R
+
+    def and: (*untyped) -> untyped
+
+    def or: (*untyped) -> untyped
+
+    def eq: (*untyped) -> bool
+
+    def array_hash: (*untyped) -> Hash[untyped, untyped]
+
+    def pretty_format: (untyped object) -> String
+
+    def pretty_print: (untyped object) -> void
+
+    def pretty_print_verbose: (untyped object) -> void
+
+    def each_send: (Array[untyped] objects, *untyped argument, Symbol method) -> void
+  end
+end

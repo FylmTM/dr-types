@@ -1,0 +1,106 @@
+module GTK
+  class Controller
+    include DirectionalInputHelperMethods
+    include ControllerKeys
+
+    attr_reader name: String
+    attr_reader connected: bool
+    attr_reader active: bool
+    attr_reader active_at: Integer?
+    attr_reader active_global_at: Integer?
+
+    attr_reader key_down: Controller::Keys
+    attr_reader key_up: Controller::Keys
+    attr_reader key_held: Controller::Keys
+
+    attr_reader left_analog_x_raw: Integer
+    attr_reader left_analog_y_raw: Integer
+    attr_reader left_analog_x_perc: Numeric
+    attr_reader left_analog_y_perc: Numeric
+    attr_reader right_analog_x_raw: Integer
+    attr_reader right_analog_y_raw: Integer
+    attr_reader right_analog_x_perc: Numeric
+    attr_reader right_analog_y_perc: Numeric
+    attr_reader analog_dead_zone: Integer
+
+    attr_reader up: bool
+    attr_reader down: bool
+    attr_reader left: bool
+    attr_reader right: bool
+
+    def key_down?: (Symbol key) -> bool
+
+    def key_up?: (Symbol key) -> bool
+
+    def key_held?: (Symbol key) -> bool
+
+    def key_down_or_held?: (Symbol key) -> bool
+
+    def left_analog_angle: () -> Numeric?
+
+    def right_analog_angle: () -> Numeric?
+
+    def left_analog_active?: (?threshold_raw: Integer?, ?threshold_perc: Numeric?) -> bool
+
+    def right_analog_active?: (?threshold_raw: Integer?, ?threshold_perc: Numeric?) -> bool
+
+    def activate_down: (Symbol key) -> void
+
+    def activate_held: (Symbol key) -> void
+
+    def activate_up: (Symbol key) -> void
+
+    def left_hand: () -> { position: { x: Integer, y: Integer, z: Integer }, orientation: { x: Integer, y: Integer, z: Integer } }
+
+    def right_hand: () -> { position: { x: Integer, y: Integer, z: Integer }, orientation: { x: Integer, y: Integer, z: Integer } }
+
+    def truthy_keys: () -> Array[Symbol]
+
+    module ControllerKeys
+      attr_reader up: bool
+      attr_reader down: bool
+      attr_reader left: bool
+      attr_reader right: bool
+
+      attr_reader a: bool
+      attr_reader b: bool
+      attr_reader x: bool
+      attr_reader y: bool
+
+      attr_reader l1: bool
+      attr_reader r1: bool
+      attr_reader l2: bool
+      attr_reader r2: bool
+      attr_reader l3: bool
+      attr_reader r3: bool
+
+      attr_reader start: bool
+      attr_reader select: bool
+      attr_reader home: bool
+      attr_reader back: bool
+      attr_reader guide: bool
+
+      attr_reader directional_up: bool
+      attr_reader directional_down: bool
+      attr_reader directional_left: bool
+      attr_reader directional_right: bool
+
+      alias dpad_up directional_up
+      alias dpad_down directional_down
+      alias dpad_left directional_left
+      alias dpad_right directional_right
+      alias up_dpad directional_up
+      alias down_dpad directional_down
+      alias left_dpad directional_left
+      alias right_dpad directional_right
+    end
+
+    class Keys
+      include ControllerKeys
+
+      def activate: (Symbol key) -> void
+
+      def deactivate: (Symbol key) -> void
+    end
+  end
+end

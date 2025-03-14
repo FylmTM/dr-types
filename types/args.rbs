@@ -1,0 +1,55 @@
+module GTK
+  class Args
+    attr_reader runtime: Runtime
+
+    alias gtk runtime
+
+    attr_reader cvars: Hash[String, untyped]
+    attr_reader inputs: Inputs
+    attr_reader outputs: Outputs
+    attr_reader audio: Audio
+    attr_reader grid: Grid
+    attr_reader geometry: Geometry
+    attr_reader events: Events
+    attr_reader layout: Layout
+    attr_reader easing: singleton(Easing)
+    attr_reader fn: Fn
+    attr_reader string: singleton(String)
+
+    attr_reader state: State
+    attr_reader temp_state: TempState
+
+    attr_reader solids: SolidsOutputsArray
+    attr_reader sprites: SpritesOutputsArray
+    attr_reader labels: LabelsOutputsArray
+    attr_reader lines: LinesOutputsArray
+    attr_reader borders: BordersOutputsArray
+    attr_reader primitives: PrimitivesOutputsArray
+
+    attr_reader static_solids: StaticSolidsOutputsArray
+    attr_reader static_sprites: StaticSpritesOutputsArray
+    attr_reader static_labels: StaticLabelsOutputsArray
+    attr_reader static_lines: StaticLinesOutputsArray
+    attr_reader static_borders: StaticBordersOutputsArray
+    attr_reader static_primitives: StaticPrimitivesOutputsArray
+
+    attr_reader keyboard: Keyboard
+
+    attr_reader mouse: Mouse
+    attr_reader click: Geometry::point?
+    attr_reader click_at: Integer?
+
+    attr_reader controller_one: Controller
+    attr_reader controller_two: Controller
+    attr_reader controller_three: Controller
+    attr_reader controller_four: Controller
+
+    def clear_pixel_arrays: () -> void
+
+    def pixel_arrays_clear: () -> void
+
+    def pixel_arrays: () -> Hash[Symbol, PixelArray]
+
+    def pixel_array: (Symbol name) -> PixelArray
+  end
+end

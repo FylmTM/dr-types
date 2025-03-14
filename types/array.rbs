@@ -1,0 +1,11 @@
+class Array[unchecked out Elem]
+  def map_2d: [T] () { (Integer row, Integer col, untyped tile) -> T } -> Array[T]
+
+  def include_any?: (*untyped elements) -> bool
+
+  def any_intersect_rect?: (GTK::Geometry::rect) -> bool
+
+  def reject_false: () -> void
+
+  alias reject_nil compact
+end

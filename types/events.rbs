@@ -1,0 +1,7 @@
+module GTK
+  module Events
+    attr_reader resize_occurred: bool
+    attr_reader orientation_changed: bool
+    attr_reader raw: Array[Hash[untyped, untyped]]
+  end
+end

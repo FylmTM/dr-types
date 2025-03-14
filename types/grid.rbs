@@ -1,0 +1,90 @@
+module GTK
+  class Grid
+    attr_reader orientation: :landscape | :portrait
+    attr_reader origin_name: :bottom_left | :center
+
+    attr_reader x: Integer
+    attr_reader x_px: Integer
+
+    attr_reader y: Integer
+    attr_reader y_px: Integer
+
+    attr_reader w: Integer
+    attr_reader w_px: Integer
+
+    attr_reader h: Integer
+    attr_reader h_px: Integer
+
+    attr_reader left: Integer
+    attr_reader left_px: Integer
+
+    attr_reader right: Integer
+    attr_reader right_px: Integer
+
+    attr_reader top: Integer
+    attr_reader top_px: Integer
+
+    attr_reader bottom: Integer
+    attr_reader bottom_px: Integer
+
+    attr_reader center_x: Integer
+    attr_reader center_x_px: Integer
+
+    attr_reader center_y: Integer
+    attr_reader center_y_px: Integer
+
+    attr_reader rect: Geometry::rect
+    attr_reader rect_px: Geometry::rect
+
+    attr_reader center: Geometry::point
+
+    attr_reader aspect_ratio_w: 16 | 9
+    attr_reader aspect_ratio_h: 9 | 16
+
+    attr_reader origin_x: Integer
+    attr_reader origin_x_px: Integer
+
+    attr_reader origin_y: Integer
+    attr_reader origin_y_px: Integer
+
+    attr_reader allscreen_left: Integer
+    attr_reader allscreen_left_px: Integer
+
+    attr_reader allscreen_right: Integer
+    attr_reader allscreen_right_px: Integer
+
+    attr_reader allscreen_top: Integer
+    attr_reader allscreen_top_px: Integer
+
+    attr_reader allscreen_bottom: Integer
+    attr_reader allscreen_bottom_px: Integer
+
+    attr_reader allscreen_w: Integer
+    attr_reader allscreen_w_px: Integer
+    attr_reader allscreen_w_pt: Integer
+
+    attr_reader allscreen_h: Integer
+    attr_reader allscreen_h_px: Integer
+    attr_reader allscreen_h_pt: Integer
+
+    attr_reader allscreen_offset_x: Integer
+    attr_reader allscreen_offset_x_px: Integer
+
+    attr_reader allscreen_offset_y: Integer
+    attr_reader allscreen_offset_y_px: Integer
+
+    attr_reader native_scale: Integer
+    attr_reader render_scale: Integer
+
+    attr_reader texture_scale: Integer
+    attr_reader texture_scale_enum: 100 | 125 | 150 | 175 | 200 | 250 | 300 | 400
+
+    def origin_bottom_left!: (?force: bool) -> void
+
+    def origin_center!: (?force: bool) -> void
+
+    def landscape?: () -> bool
+
+    def portrait?: () -> bool
+  end
+end

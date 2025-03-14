@@ -1,0 +1,339 @@
+module GTK
+  include Runtime
+
+  module Runtime
+    include TopLevelFunctions
+    include RuntimeFFI
+    include RuntimeBenchmarks
+    include RuntimeDeveloperSupport
+    include RuntimeDownloadStb
+    include RuntimeDraw
+    include RuntimeFramerate
+    include RuntimeNotification
+    include RuntimePlatform
+    include RuntimeWindow
+    include RuntimeEnvironmentAndUtility
+    include RuntimeSerde
+    include RuntimeFileIO
+    include RuntimeNetworkIO
+    include RuntimeRecording
+  end
+
+  module TopLevelFunctions
+    def reboot: () -> void
+  end
+
+  module RuntimeFFI
+    def dlopen: (String) -> void
+
+    def get_dlopen_path: (String) -> void
+
+    def ffi_misc: () -> RuntimeFFIMisc
+  end
+
+  module RuntimeFFIMisc
+    def gtk_dlopen: (String) -> void
+  end
+
+  module RuntimeBenchmarks
+    def self.benchmark: (?seconds: Numeric?, ?iterations: Integer?, **^() -> void benchmarks) -> Hash[Symbol, {
+          name: Symbol,
+          iterations: Integer,
+          time: Float,
+          time_ms: Integer
+        }]
+  end
+
+  module RuntimeDeveloperSupport
+    def version: () -> String
+
+    def version_pro?: () -> bool
+
+    def game_version: () -> String
+
+    def reset: (?seed: Integer?) -> void
+
+    def reset_next_tick: (?seed: Integer?) -> void
+
+    def seed: () -> Integer
+
+    def set_rng: (Integer seed) -> void
+
+    def setenv: (String name, String value, bool overwrite) -> untyped
+
+    def getenv: (String name) -> String?
+
+    def reset_sprite: (String path) -> nil
+
+    def reset_sprites: (?directory: String?, ?indentation: Integer?, ?suppress_logging: bool?) -> nil
+
+    def calcspritebox: (String str) -> [Integer, Integer]
+
+    def warn_array_primitives!: () -> true
+
+    def trace_puts!: () -> void
+
+    alias add_caller_to_puts! trace_puts!
+
+    def speedup!: (Integer factor) -> void
+
+    def slowmo!: (Integer factor, ?bool should_notify) -> void
+
+    alias slowdown! slowmo!
+
+    def argv: () -> String
+
+    def cli_arguments: () -> Hash[String, String]
+
+    def get_relative_game_dir: () -> String
+
+    def get_base_dir: () -> String
+
+    def get_game_dir: () -> String
+
+    def open_game_dir: (?String? additional_directories) -> void
+
+    def get_game_dir_url: (?String? additional_directories) -> String
+
+    def capture_timings: (category: Symbol, ?color: Hash[Symbol, Integer]?) { () -> untyped } -> untyped
+
+    def show_console: () -> void
+
+    def hide_console: () -> void
+
+    def enable_console: () -> void
+
+    def disable_console: () -> void
+
+    def disable_reset_via_ctrl_r: () -> void
+
+    def disable_controller_config: () -> void
+
+    def enable_controller_config: () -> void
+
+    def reload_history: () -> Hash[untyped, untyped]
+
+    def reload_history_pending: () -> Hash[untyped, untyped]
+
+    def reload_if_needed: (String, bool force) -> void
+
+    def current_thermal_state: () -> (:unknown | :nominal | :fair | :serious | :critical)
+  end
+
+  module RuntimeDownloadStb
+    def download_stb_rb: (String url) -> void
+      | (String user_name, String repo_name, String file_name) -> void
+
+    def download_stb_rb_raw: (String download_url, String save_path) -> void
+
+    def download_stb_rb_print_usage: () -> String
+  end
+
+  module RuntimeDraw
+    def draw_solid: (untyped s) -> (nil | untyped)
+
+    def draw_sprite: (untyped s) -> (nil | untyped)
+
+    def draw_screenshot: (untyped s) -> (nil | untyped)
+
+    def draw_label: (untyped l) -> (nil | untyped)
+
+    def draw_line: (untyped l) -> (nil | untyped)
+
+    def draw_border: (untyped s) -> (nil | untyped)
+
+    def draw_screenshots: () -> Array[untyped]
+
+    def pixel_arrays: () -> Hash[Symbol | String, untyped]
+
+    def draw_primitive: (untyped p) -> (nil | untyped)
+
+  end
+
+  module RuntimeFramerate
+    type framerate_primitive = Hash[Symbol, String | Integer | Float]
+
+    def disable_framerate_warning!: () -> bool
+
+    def enable_framerate_warning!: () -> bool
+
+    def reset_framerate_calculation: () -> Integer
+
+    def framerate_should_show_warning?: () -> bool
+
+    def check_framerate: () -> nil
+
+    def framerate_diagnostics: () -> true
+
+    def framerate_below_threshold?: () -> bool
+
+    def current_framerate: () -> Integer
+
+    def get_framerate_diagnostics: () -> String
+
+    alias framerate_get_diagnostics get_framerate_diagnostics
+
+    def framerate_warning_message: () -> String
+
+    def current_framerate_primitives: () -> Array[framerate_primitive]
+
+    def framerate_diagnostics_primitives: () -> Array[framerate_primitive]
+  end
+
+  module RuntimeNotification
+    def notify!: (String message, ?Integer duration) -> void
+
+    def notify_extended!: (
+        ?message: String,
+        ?duration: Integer,
+        ?env: Symbol,
+        ?a: Integer,
+        ?overwrite: bool) -> void
+  end
+
+  module RuntimePlatform
+    type platform_name = String
+    type platform_id = Symbol
+
+    attr_reader platform: platform_name
+    attr_reader platform_mapping: Hash[platform_name, Array[platform_id]]
+    attr_reader is_steam_release: bool
+
+    def platform?: (platform_name | platform_id value) -> bool
+  end
+
+  module RuntimeWindow
+    def can_resize_window?: () -> bool
+
+    def can_move_window?: () -> bool
+
+    def can_close_window?: () -> bool
+
+    def can_change_orientation?: () -> bool
+
+    def toggle_window_fullscreen: () -> void
+
+    def set_window_fullscreen: (bool enable) -> void
+
+    def window_fullscreen?: () -> bool
+
+    def set_window_title: (String title) -> void
+
+    def set_window_scale: (Float scale_value) -> void
+      | (Float scale_value, Integer aspect_unit_w) -> void
+      | (Float scale_value, Integer aspect_unit_w, Integer aspect_unit_h) -> void
+
+    def move_window_to_next_display: () -> void
+
+    def maximize_window: () -> void
+
+    def set_orientation: (:portrait | :landscape orientation_name) -> void
+
+    def toggle_orientation: () -> void
+
+    def set_hd_max_scale: (Integer hd_max_scale) -> void
+
+    def set_scale_quality: (Integer scale_quality) -> void
+
+    def set_hd_letterbox: (bool enabled) -> void
+
+    def toggle_hd_letterbox: () -> void
+  end
+
+  module RuntimeEnvironmentAndUtility
+    def calcstringbox: (String text, ?Integer size_enum, ?String? font) -> void
+      | (String text, ?size_enum: Integer, ?size_px: Integer, ?font: String) -> void
+
+    def get_pixels: (String file) -> { w: Integer, h: Integer, pixels: Array[Integer] }
+
+    def request_quite: () -> void
+
+    def quit_request?: () -> void
+
+    def production?: () -> void
+
+    def openurl: (String url) -> void
+
+    def system: (String command) -> void
+
+    def exec: (String command) -> String
+
+    def show_cursor: () -> void
+
+    def hide_cursor: () -> void
+
+    def cursor_shown?: () -> void
+
+    def set_mouse_grab: (0 | 1 | 2 mode) -> void
+
+    def set_system_cursor: ("arrow" | "ibeam" | "wait" | "hand") -> void
+
+    def set_cursor: (String path, Integer x, Integer y) -> void
+
+    def create_uuid: () -> String
+  end
+
+  module RuntimeFileIO
+    def list_files: (String path) -> Array[String]
+
+    def stat_file: (String path) -> (nil | {
+          path: String,
+          file_size: Integer,
+          mod_time: Integer,
+          create_time: Integer,
+          access_time: Integer,
+          readonly: bool,
+          file_type: :regular | :directory | :symlink | :other
+        })
+
+    def read_file: (String path) -> String?
+
+    def write_file: (String path, String content) -> void
+
+    def append_file: (String path, String content) -> void
+
+    def delete_file: (String path) -> void
+
+    def write_file_root: (String path, String content) -> void
+
+    def append_file_root: (String path, String content) -> void
+  end
+
+  module RuntimeSerde
+    def parse_json: (String json) -> Hash[String, untyped]
+
+    def parse_json_file: (String path) -> Hash[String, untyped]
+
+    def parse_xml: (String xml) -> Hash[String, untyped]
+
+    def parse_xml_file: (String path) -> Hash[String, untyped]
+  end
+
+  module RuntimeNetworkIO
+    type http_response = {
+        :complete => bool,
+        :response_data => untyped,
+        :http_response_code => untyped
+      }
+
+    def http_get: (String url) -> http_response
+
+    def http_post: (String url, Hash[String, String] fields, ?Array[String] headers) -> void
+
+    def http_post_body: (String url, String body, ?Array[String] headers) -> void
+
+    def start_server!: (?port: Integer, ?enable_in_prod: bool) -> void
+  end
+
+  module RuntimeRecording
+    def start_recording: () -> void
+
+    def stop_recording: () -> void
+
+    def cancel_recording: () -> void
+
+    def start_replay: (String file) -> void
+
+    def stop_replay: () -> void
+  end
+end

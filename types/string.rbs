@@ -1,0 +1,41 @@
+class String
+  def char_byte: () -> (nil | Integer)
+
+  def insert_character_at: (Integer index, String char) -> String
+
+  def excluding_character_at: (Integer index) -> String
+
+  def excluding_last_character: () -> String
+
+  def end_with_bang?: () -> bool
+
+  def without_ending_bang: () -> String
+
+  def self.wrapped_lines: (String string, Integer length) -> Array[String]
+
+  def wrapped_lines: (Integer length) -> Array[String]
+
+  def wrap: (Integer length) -> String
+
+  def multiline?: () -> bool
+
+  def indent_lines: (Integer amount, ?String char) -> String
+
+  def quote: () -> String
+
+  def trim: () -> String
+
+  def trim!: () -> String?
+
+  def ltrim: () -> String
+
+  def ltrim!: () -> String?
+
+  def rtrim: () -> String
+
+  def rtrim!: () -> String?
+
+  def serialize: () -> self
+
+  def indent: (Integer count, ?indent_char: String, ?pad_line_with_space: bool) -> String | (Integer count, String indent_char) -> String
+end

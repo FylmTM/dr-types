@@ -1,0 +1,69 @@
+module GTK
+  class Inputs
+    attr_reader keyboard: Keyboard
+    attr_reader text: Array[String]
+
+    attr_reader mouse: Mouse
+
+    attr_reader controllers: [Controller, Controller, Controller, Controller]
+    attr_reader controller_one: Controller
+    attr_reader controller_two: Controller
+    attr_reader controller_three: Controller
+    attr_reader controller_four: Controller
+
+    attr_reader touch_enabled: bool
+    attr_reader touch: Hash[Symbol, FingerTouch]
+    attr_reader multi_touch_finger_up_at: Integer?
+    attr_reader finger_one: Geometry::point?
+    attr_reader finger_two: Geometry::point?
+    attr_reader finger_left: Geometry::point?
+    attr_reader finger_right: Geometry::point?
+    attr_reader pinch_zoom: Integer
+    attr_reader touch_center: Geometry::point
+
+    attr_reader http_requests: Array[untyped]
+    attr_reader history: untyped
+
+    attr_reader last_active: Symbol?
+    attr_reader last_active_at: Integer?
+    attr_reader last_active_global_at: Integer?
+
+    attr_reader locale: String
+    attr_reader locale_raw: String?
+
+    attr_reader up: bool
+    attr_reader down: bool
+    attr_reader left: bool
+    attr_reader right: bool
+
+    alias up_with_wasd up
+    alias down_with_wasd down
+    alias left_with_wasd left
+    alias right_with_wasd right
+
+    attr_reader left_right: (-1 | 0 | 1)
+    attr_reader left_right_perc: Float
+    attr_reader left_right_directional: (-1 | 0 | 1)
+    attr_reader left_right_directional_perc: Float
+
+    alias left_right_with_wasd left_right
+    alias left_right_perc_with_wasd left_right_perc
+    alias left_right_arrow left_right_directional
+
+    attr_reader up_down: (-1 | 0 | 1)
+    attr_reader up_down_perc: Float
+    attr_reader up_down_directional: (-1 | 0 | 1)
+    attr_reader up_down_directional_perc: Float
+
+    alias up_down_with_wasd up_down
+    alias up_down_arrow up_down_directional
+
+    def directional_vector: () -> Geometry::vector2
+
+    def directional_angle: () -> Float
+
+    def click: () -> Geometry::point?
+
+    def controller_at: (Integer index) -> Controller
+  end
+end

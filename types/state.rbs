@@ -1,0 +1,34 @@
+module GTK
+  module State
+    include StateEntities
+  end
+
+  module TempState
+    include StateEntities
+  end
+
+  module StateEntities
+    attr_reader tick_count: Integer
+
+    def new_entity: (Symbol entity_type, **untyped init_hash) ?{ (Entity entity) -> void } -> Entity
+
+    def new_entity_strict: (Symbol entity_type, **untyped init_hash) ?{ (Entity entity) -> void } -> Entity
+  end
+
+  class Entity
+    include Geometry
+
+    attr_reader entity_id: Fixnum
+    attr_accessor entity_type: Symbol
+    attr_reader created_at: Integer
+    attr_reader created_at_elapsed: Integer
+    attr_reader global_created_at: Integer
+    attr_reader global_created_at_elapsed: Integer
+
+    def []: (Symbol key) -> untyped
+
+    def []=: (Symbol key, untyped value) -> untyped
+
+    def as_hash: () -> Hash[untyped, untyped]
+  end
+end

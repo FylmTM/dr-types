@@ -1,0 +1,204 @@
+module GTK
+  class Mouse
+    include Geometry
+
+    attr_reader active: bool
+    attr_reader has_focus: bool
+
+    attr_reader x: Integer
+    attr_reader y: Integer
+    attr_reader previous_x: Integer?
+    attr_reader previous_y: Integer?
+    attr_reader relative_x: Integer
+    attr_reader relative_y: Integer
+
+    attr_reader moved: bool?
+    attr_reader moved_at: Integer?
+    attr_reader global_moved_at: Integer?
+
+    attr_reader button_left: bool
+    attr_reader button_middle: bool
+    attr_reader button_right: bool
+    attr_reader button_bits: Integer
+    attr_reader wheel: { x: Integer, y: Integer, dx: Integer, dy: Integer }?
+
+    attr_reader up: MousePoint?
+    attr_reader down: MousePoint?
+    attr_reader click: MousePoint?
+    attr_reader previous_click: MousePoint?
+
+    attr_reader button_x1: bool
+    attr_reader button_x2: bool
+
+    attr_reader click_at: Integer?
+    attr_reader global_click_at: Integer?
+    attr_reader up_at: Integer?
+    attr_reader global_up_at: Integer?
+
+    attr_reader key_down: MouseKeys
+    attr_reader key_up: MouseKeys
+    attr_reader key_held: MouseKeys
+    attr_reader buttons: MouseButtons
+
+    attr_reader point: Geometry::rect
+    attr_reader rect: Geometry::rect
+
+    alias position point
+
+    attr_reader w: 0
+    attr_reader h: 0
+
+    def held: () -> MousePoint?
+
+    def held_at: () -> Integer?
+
+    def global_held_at: () -> Integer?
+
+    def inside_rect?: (Geometry::rect rect) -> bool
+
+    def inside_circle?: (Geometry::point center, Integer radius) -> bool
+
+    def intersect_rect?: (Geometry::rect other_rect) -> bool
+
+    def merge: (Hash[Symbol, untyped] o) -> Geometry::point
+
+    def left: () -> bool
+
+    def middle: () -> bool
+
+    def right: () -> bool
+
+    def x1: () -> bool
+
+    def x2: () -> bool
+
+    def key_down?: (Symbol key) -> bool
+
+    def key_up?: (Symbol key) -> bool
+
+    def key_held?: (Symbol key) -> bool
+
+    def key_down_or_held?: (Symbol key) -> bool
+
+    def buffered_click: () -> bool
+
+    def buffered_held: () -> bool
+  end
+
+  class MousePoint
+    include Geometry
+
+    attr_reader x: Integer
+    attr_reader y: Integer
+    attr_reader point: Geometry::point
+    attr_reader created_at: Integer
+    attr_reader global_created_at: Integer
+
+    def initialize: (Integer x, Integer y) -> void
+
+    def w: () -> 0
+
+    def h: () -> 0
+
+    def left: () -> Integer
+
+    def right: () -> Integer
+
+    def top: () -> Integer
+
+    def bottom: () -> Integer
+
+    def created_at_elapsed: () -> Integer
+
+    def to_hash: () -> Geometry::point
+
+    def to_h: () -> Geometry::point
+  end
+
+  class FingerTouch
+    attr_reader moved: bool
+    attr_reader moved_at: Integer?
+    attr_reader global_moved_at: Integer?
+    attr_reader down_at: Integer?
+    attr_reader global_down_at: Integer?
+    attr_reader touch_order: Integer
+    attr_reader first_tick_down: bool
+    attr_reader x: Integer
+    attr_reader y: Integer
+    attr_reader previous_x: Integer?
+    attr_reader previous_y: Integer?
+
+    def point: () -> Geometry::point
+
+    def inside_rect?: (Geometry::point rect) -> bool
+      | (Geometry::rect rect) -> bool
+
+    def inside_circle?: (Geometry::point center, Integer radius) -> bool
+      | (Geometry::circle center) -> bool
+  end
+
+  type button_id = Integer
+  type button_index = Integer
+
+  class MouseButtons
+    include Enumerable[MouseButton]
+
+    attr_reader left: MouseButton
+    attr_reader middle: MouseButton
+    attr_reader right: MouseButton
+    attr_reader x1: MouseButton
+    attr_reader x2: MouseButton
+
+    def each: () { (MouseButton) -> void } -> Array[MouseButton]
+      | () -> Enumerator[MouseButton, Array[MouseButton]]
+  end
+
+  class MouseButton
+    attr_reader id: button_id
+    attr_reader index: button_index
+    attr_reader x: Integer
+    attr_reader y: Integer
+    attr_reader relative_x: Integer
+    attr_reader relative_y: Integer
+
+    attr_reader click: MousePoint?
+    attr_reader click_at: Integer?
+    attr_reader global_click_at: Integer?
+    attr_reader previous_click: MousePoint?
+
+    attr_reader up: MousePoint?
+    attr_reader up_at: Integer?
+    attr_reader global_up_at: Integer?
+
+    alias down click
+    alias down_at click_at
+    alias global_down_at global_click_at
+
+    attr_reader w: 0
+    attr_reader h: 0
+
+    def held: () -> MousePoint?
+
+    def held_at: () -> Integer?
+
+    def global_held_at: () -> Integer?
+
+    def buffered_click: () -> MousePoint?
+
+    def buffered_duration_threshold: () -> Integer
+
+    def buffered_distance_threshold: () -> Integer
+
+    def held_duration: () -> Integer
+
+    def buffered_held: () -> MousePoint?
+  end
+
+  class MouseKeys
+    attr_reader left: bool
+    attr_reader middle: bool
+    attr_reader right: bool
+    attr_reader x1: bool
+    attr_reader x2: bool
+  end
+end

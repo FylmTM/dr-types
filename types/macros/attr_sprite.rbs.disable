@@ -1,0 +1,135 @@
+module AttrRect
+  include GTK::Geometry
+
+  def left: () -> Numeric
+
+  def right: () -> Numeric
+
+  def bottom: () -> Numeric
+
+  def top: () -> Numeric
+
+  def x1: () -> Numeric
+
+  def y1: () -> Numeric
+end
+
+module AttrSprite
+  @x: Numeric
+
+  @y: Numeric
+
+  include AttrRect
+
+  attr_accessor x: Numeric
+
+  attr_accessor y: Numeric
+
+  attr_accessor w: Numeric
+
+  attr_accessor h: Numeric
+
+  attr_accessor path: String
+
+  attr_accessor angle: Numeric
+
+  attr_accessor a: Numeric
+
+  attr_accessor r: Numeric
+
+  attr_accessor g: Numeric
+
+  attr_accessor b: Numeric
+
+  attr_accessor tile_x: Numeric
+
+  attr_accessor tile_y: Numeric
+
+  attr_accessor tile_w: Numeric
+
+  attr_accessor tile_h: Numeric
+
+  attr_accessor flip_horizontally: bool
+
+  attr_accessor flip_vertically: bool
+
+  attr_accessor angle_anchor_x: Numeric
+
+  attr_accessor angle_anchor_y: Numeric
+
+  attr_accessor id: String?
+
+  attr_accessor angle_x: Numeric
+
+  attr_accessor angle_y: Numeric
+
+  attr_accessor z: Numeric
+
+  attr_accessor source_x: Numeric
+
+  attr_accessor source_y: Numeric
+
+  attr_accessor source_w: Numeric
+
+  attr_accessor source_h: Numeric
+
+  attr_accessor blendmode_enum: Integer
+
+  attr_accessor source_x2: Numeric
+
+  attr_accessor source_y2: Numeric
+
+  attr_accessor source_x3: Numeric
+
+  attr_accessor source_y3: Numeric
+
+  attr_accessor x2: Numeric
+
+  attr_accessor y2: Numeric
+
+  attr_accessor x3: Numeric
+
+  attr_accessor y3: Numeric
+
+  attr_accessor anchor_x: Numeric
+
+  attr_accessor anchor_y: Numeric
+
+  attr_accessor r2: Numeric
+
+  attr_accessor g2: Numeric
+
+  attr_accessor b2: Numeric
+
+  attr_accessor a2: Numeric
+
+  attr_accessor r3: Numeric
+
+  attr_accessor g3: Numeric
+
+  attr_accessor b3: Numeric
+
+  attr_accessor a3: Numeric
+
+  attr_accessor scale_quality_enum: Integer
+
+  def primitive_marker: () -> :sprite
+
+  def sprite: () -> self
+
+  def x1=: (Numeric value) -> Numeric
+
+  def y1=: (Numeric value) -> Numeric
+end
+
+class Object
+  def self.attr_sprite: () -> Module
+
+
+  def attr_sprite: () -> (nil | self)
+
+  def self.attr_rect: () -> Module
+
+
+  def attr_rect: () -> (nil | self)
+end

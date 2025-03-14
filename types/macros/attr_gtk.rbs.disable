@@ -1,0 +1,100 @@
+module GTK
+  class Args
+    attr_accessor inputs: GTK::Inputs
+    attr_accessor outputs: GTK::Outputs
+    attr_accessor grid: GTK::Grid
+    attr_accessor passes: Array[untyped]
+    attr_accessor tick_count: Integer
+    attr_accessor global_tick_count: Integer
+  end
+end
+
+module AttrGTK
+  @args: GTK::Args
+
+  @keyboard: GTK::Keyboard
+
+  @grid: GTK::Grid
+
+  @state: untyped
+
+  @temp_state: untyped
+
+  @inputs: GTK::Inputs
+
+  @outputs: GTK::Outputs
+
+  @gtk: untyped
+
+  @passes: Array[untyped]
+
+  @pixel_arrays: untyped
+
+  @geometry: GTK::Geometry
+
+  @layout: GTK::Layout
+
+  @easing: untyped
+
+  @audio: untyped
+
+  @events: untyped
+
+  @cvars: Hash[Symbol, untyped]
+
+  def args=: (GTK::Args value) -> GTK::Args
+
+  def args: () -> GTK::Args
+
+  def keyboard: () -> GTK::Keyboard
+  
+  def grid: () -> GTK::Grid
+  
+  def state: () -> untyped
+  
+  def temp_state: () -> untyped
+  
+  def inputs: () -> GTK::Inputs
+  
+  def outputs: () -> GTK::Outputs
+  
+  def gtk: () -> untyped
+  
+  def passes: () -> Array[untyped]
+  
+  def pixel_arrays: () -> untyped
+  
+  def geometry: () -> GTK::Geometry
+  
+  def layout: () -> GTK::Layout
+  
+  def easing: () -> untyped
+  
+  def audio: () -> untyped
+  
+  def events: () -> untyped
+  
+  def cvars: () -> Hash[Symbol, untyped]
+  
+  def new_entity: (Symbol entity_type, ?Hash[Symbol, untyped]? init_hash) { (GTK::OpenEntity) -> void } -> GTK::OpenEntity
+  
+  def new_entity_strict: (Symbol entity_type, ?Hash[Symbol, untyped]? init_hash) { (GTK::StrictEntity) -> void } -> GTK::StrictEntity
+  
+  def tick_count: () -> Integer
+  
+  def global_tick_count: () -> Integer
+end
+
+class Module
+  def attr_gtk: () -> void
+
+  include AttrGTK
+end
+
+class Object
+  def self.attr_gtk: () -> void
+
+  extend AttrGTK
+
+  def attr_gtk: () -> nil?
+end

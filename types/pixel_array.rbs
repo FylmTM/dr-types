@@ -1,0 +1,11 @@
+module GTK
+  class PixelArray
+    attr_accessor width: Integer
+    attr_accessor height: Integer
+    attr_accessor w: Integer
+    attr_accessor h: Integer
+    attr_accessor pixels: Array[Integer]
+
+    def fill: (color: Integer, offset: Integer, length: Integer) -> void
+  end
+end

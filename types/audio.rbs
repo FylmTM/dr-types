@@ -1,0 +1,5 @@
+module GTK
+  class Audio < Hash[Symbol, Hash[Symbol, untyped]]
+    attr_accessor volume: Float
+  end
+end

@@ -1,0 +1,40 @@
+module AttrLabel
+  attr_accessor x: Numeric
+
+  attr_accessor y: Numeric
+
+  attr_accessor z: Numeric
+
+  attr_accessor text: String
+
+  attr_accessor size_enum: Integer
+
+  attr_accessor alignment_enum: Integer
+
+  attr_accessor vertical_alignment_enum: Integer
+
+  attr_accessor r: Numeric
+
+  attr_accessor g: Numeric
+
+  attr_accessor b: Numeric
+
+  attr_accessor a: Numeric
+
+  attr_accessor font: String
+
+  attr_accessor blendmode_enum: Integer
+
+  attr_accessor anchor_x: Numeric
+
+  attr_accessor anchor_y: Numeric
+
+  attr_accessor size_px: Numeric
+end
+
+class Object
+  def self.attr_label: () -> Module
+
+
+  def attr_label: () -> (nil | self)
+end

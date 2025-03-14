@@ -1,0 +1,264 @@
+class Numeric
+  def self.rand:
+    () -> Float
+    | (Integer) -> Integer
+    | (Float) -> Float
+    | (Range[Integer]) -> Integer
+    | (Range[Float]) -> Float
+
+
+  def self.frame_index_no_repeat: (?start_at: Integer, ?count: Integer?, ?frame_count: Integer?, ?hold_for: Integer, ?tick_count_override: Integer, **untyped ignored) -> (nil | Integer)
+
+  def self.frame_index: (?start_at: Integer, ?count: Integer?, ?frame_count: Integer?, ?hold_for: Integer, ?repeat: bool, ?tick_count_override: Integer, ?repeat_index: Integer) -> (nil | Integer)
+
+  def to_layout_row: (?Hash[Symbol, Numeric] opts) -> Numeric
+
+  def to_layout_col: (?Hash[Symbol, Numeric] opts) -> Numeric
+
+  def to_layout_w: () -> Numeric
+
+  def to_layout_h: () -> Numeric
+
+  def to_layout_row_from_bottom: (?Hash[Symbol, Numeric] opts) -> Numeric
+
+  def to_layout_col_from_right: (?Hash[Symbol, Numeric] opts) -> Numeric
+
+  def seconds: () -> Numeric
+
+  def half: () -> Float
+
+  def third: () -> Float
+
+  def quarter: () -> Float
+
+  def to_byte: () -> Integer
+
+  def clamp: (Numeric min, ?Numeric? max) -> (Numeric | self)
+
+  def clamp_wrap: (Numeric min, Numeric max) -> Numeric
+
+  def elapsed_time: (?Integer? tick_count_override) -> Integer
+
+  def elapsed_time_percent: (Numeric duration) -> Float
+
+  def elapsed?: (?Integer offset, ?Integer tick_count_override) -> bool
+
+  def new?: (?Integer tick_count_override) -> bool
+
+  def frame_index: (Integer frame_count, Integer hold_for, bool repeat, ?Integer tick_count_override) -> (nil | Integer)
+    | (?frame_count: Integer, ?count: Integer, ?hold_for: Integer, ?repeat: bool, ?tick_count_override: Integer, ?repeat_index: Integer) -> (nil | Integer)
+
+  def shift_right: (Numeric i) -> Numeric
+
+  def shift_left: (Numeric i) -> Numeric
+
+  def shift_up: (Numeric i) -> Numeric
+
+  def shift_down: (Numeric i) -> Numeric
+
+  def randomize: (*Symbol definitions) -> (Numeric | self)
+
+  def rand_sign: () -> (-1 | 1)
+
+  def rand_ratio: () -> Float
+
+  def remainder_of_divide: (Numeric n) -> Numeric
+
+  def ease_extended: (Integer tick_count_override, Integer duration, Numeric default_before, Numeric default_after, *Symbol definitions) -> Numeric
+
+  def global_ease: (Integer duration, *Symbol definitions) -> Numeric
+
+  def ease: (Integer duration, *Symbol definitions) -> Numeric
+
+  def ease_spline_extended: (Integer tick_count_override, Integer duration, untyped spline) -> Numeric
+
+  def global_ease_spline: (Integer duration, untyped spline) -> Numeric
+
+  def ease_spline: (Integer duration, untyped spline) -> Numeric
+
+  def to_radians: () -> Float
+
+  def to_degrees: () -> Float
+
+  def to_square: (Numeric x, Numeric y, ?Float anchor_x, ?Float? anchor_y) -> ::Array[Numeric]
+
+  def vector: (?Integer max_value) -> ::Array[Float]
+
+  def to_vector_r: (?Integer max_value) -> { x: Float, y: Float }
+
+  def vector_x_r: (?Integer max_value) -> Float
+
+  def vector_y_r: (?Integer max_value) -> Float
+
+  def to_vector: (?Integer max_value) -> { x: Float, y: Float }
+
+  def vector_y: (?Integer max_value) -> Float
+
+  def vector_x: (?Integer max_value) -> Float
+
+  alias vector_x_d vector_x
+
+  alias vector_y_d vector_y
+
+  alias to_vector_d to_vector
+
+  def x_vector: (?Integer max_value) -> Float
+
+  def y_vector: (?Integer max_value) -> Float
+
+  def mod: (Numeric n) -> Numeric
+
+  def mod_zero?: (*Numeric ns) -> bool
+
+  def zmod?: (Numeric n) -> bool
+
+  def multiply: (Numeric n) -> Numeric
+
+  def fmult: (Numeric n) -> Float
+
+  def imult: (Numeric n) -> Integer
+
+  def mult: (Numeric n) -> Numeric
+
+  def idiv: (Numeric n) -> Integer
+
+  def towards: (Numeric target, Numeric magnitude) -> (self | Numeric)
+
+  def lerp: (Numeric to, Numeric step) -> Numeric
+
+  def remap: (Numeric r1_begin, Numeric r1_end, Numeric r2_begin, Numeric r2_end) -> Numeric
+
+  def map_with_ys: (Integer ys) { (Integer, Integer) -> untyped } -> ::Array[untyped]
+
+  def combinations: (Integer other_int) -> ::Array[::Array[Integer]]
+
+  def percentage_of: (Numeric n) -> Float
+
+  def cap: (Numeric i) -> (Numeric | self)
+
+  def cap_min_max: (Numeric min, Numeric max) -> (Numeric | self)
+
+  def lesser: (Numeric other) -> (Numeric | self)
+
+  def greater: (Numeric other) -> (Numeric | self)
+
+  def subtract: (Numeric i) -> Numeric
+
+  def minus: (Numeric i) -> Numeric
+
+  def add: (Numeric i) -> Numeric
+
+  def plus: (Numeric i) -> Numeric
+
+  def numbers: () -> ::Array[Integer]
+
+  def each: () { (Integer) -> untyped } -> self
+    | () -> Enumerator[Integer, self]
+
+  def each_with_index: () { (Integer, Integer) -> untyped } -> self
+    | () -> Enumerator[[Integer, Integer], self]
+
+  def map: () { (Integer) -> untyped } -> ::Array[untyped]
+    | () -> Enumerator[Integer, ::Array[untyped]]
+
+  def map_with_index: () { (Integer, Integer) -> untyped } -> ::Array[untyped]
+    | () -> Enumerator[[Integer, Integer], ::Array[untyped]]
+
+  def times_with_index: () { (Integer, Integer) -> untyped } -> self
+    | () -> Enumerator[[Integer, Integer], self]
+
+  def flat_map: () { (Integer) -> ::Array[untyped] } -> ::Array[untyped]
+    | () -> Enumerator[Integer, ::Array[untyped]]
+
+  def serialize: () -> self
+
+  def self.from_top: (Numeric n) -> Numeric
+
+  def from_top: () -> Numeric
+
+  def self.from_right: (Numeric n) -> Numeric
+
+  def from_right: () -> Numeric
+
+  def self.clamp: (Numeric n, Numeric min, Numeric max) -> Numeric
+
+  def mid?: (Numeric l, Numeric r) -> bool
+
+  def self.from_left: (Numeric n) -> Numeric
+
+  def from_left: () -> Numeric
+
+  def self.from_bottom: (Numeric n) -> Numeric
+
+  def from_bottom: () -> Numeric
+end
+
+class Fixnum
+  def even?: () -> bool
+
+  def odd?: () -> bool
+
+  def sign: () -> (-1 | 1 | 0)
+
+  def pos?: () -> bool
+
+  def neg?: () -> bool
+
+  def cos: () -> Float
+
+  def cos_r: () -> Float
+
+  def cos_d: () -> Float
+
+  def sin: () -> Float
+
+  def sin_r: () -> Float
+
+  def sin_d: () -> Float
+
+  def tan: () -> Float
+
+  def tan_d: () -> Float
+
+  def tan_r: () -> Float
+
+  def to_sf: () -> String
+
+  def to_si: () -> String
+
+  def ifloor: (Integer int) -> Integer
+end
+
+class Float
+  def sign: () -> (-1 | 1 | 0)
+
+  def replace_infinity: (Numeric scalar) -> (self | Numeric)
+
+  def to_sf: () -> String
+
+  def ifloor: (Integer int) -> Integer
+
+  def sin: () -> Float
+
+  def cos: () -> Float
+
+  def sin_r: () -> Float
+
+  def sin_d: () -> Float
+
+  def cos_r: () -> Float
+
+  def cos_d: () -> Float
+
+  def tan: () -> Float
+
+  def tan_d: () -> Float
+
+  def tan_r: () -> Float
+end
+
+class Integer
+  def nan?: () -> false
+
+  def center: (Integer other) -> Float
+end

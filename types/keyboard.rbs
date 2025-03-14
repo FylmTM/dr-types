@@ -1,0 +1,250 @@
+module GTK
+  type key_name = Symbol
+  type key_code = Integer
+
+  type key_collection = {
+      down: Array[key_name],
+      held: Array[key_name],
+      down_or_held: Array[key_name],
+      up: Array[key_name],
+      repeat: Array[key_name]
+    }
+
+  class Keyboard
+    include DirectionalInputHelperMethods
+
+    attr_reader active: bool
+    attr_reader has_focus: bool
+    attr_reader key_up: KeyboardKeys
+    attr_reader key_held: KeyboardKeys
+    attr_reader key_down: KeyboardKeys
+    attr_reader key_repeat: KeyboardKeys
+
+    def key_down?: (key_name key_name) -> bool
+
+    def key_up?: (key_name key_name) -> bool
+
+    def key_held?: (key_name key_name) -> bool
+
+    def key_repeat?: (key_name key_name) -> bool
+
+    def key_down_or_held?: (key_name key_name) -> bool
+
+    def p: () -> bool
+
+    def left: () -> bool
+
+    def left_arrow: () -> bool
+
+    def right: () -> bool
+
+    def right_arrow: () -> bool
+
+    def up: () -> bool
+
+    def up_arrow: () -> bool
+
+    def down: () -> bool
+
+    def down_arrow: () -> bool
+
+    def key: () -> key_collection
+
+    alias keys key
+  end
+
+  class KeyboardKeys
+    attr_reader keycodes: Hash[key_code, key_name]
+
+    attr_reader raw_key: Numeric
+    attr_reader char: String?
+
+    attr_reader tilde: bool?
+    attr_reader underscore: bool?
+    attr_reader double_quotation_mark: bool?
+    attr_reader exclamation_point: bool?
+    attr_reader at: bool?
+    attr_reader hash: bool?
+    attr_reader dollar: bool?
+    attr_reader percent: bool?
+    attr_reader caret: bool?
+    attr_reader ampersand: bool?
+    attr_reader asterisk: bool?
+    attr_reader open_round_brace: bool?
+    attr_reader close_round_brace: bool?
+    attr_reader open_curly_brace: bool?
+    attr_reader close_curly_brace: bool?
+    attr_reader colon: bool?
+    attr_reader plus: bool?
+    attr_reader pipe: bool?
+    attr_reader question_mark: bool?
+    attr_reader less_than: bool?
+    attr_reader greater_than: bool?
+    attr_reader section: bool?
+    attr_reader ordinal_indicator: bool?
+    attr_reader superscript_two: bool?
+    attr_reader zero: bool?
+    attr_reader one: bool?
+    attr_reader two: bool?
+    attr_reader three: bool?
+    attr_reader four: bool?
+    attr_reader five: bool?
+    attr_reader six: bool?
+    attr_reader seven: bool?
+    attr_reader eight: bool?
+    attr_reader nine: bool?
+    attr_reader backspace: bool?
+    attr_reader delete: bool?
+    attr_reader escape: bool?
+    attr_reader enter: bool?
+    attr_reader tab: bool?
+    attr_reader open_square_brace: bool?
+    attr_reader close_square_brace: bool?
+    attr_reader semicolon: bool?
+    attr_reader equal: bool?
+    attr_reader hyphen: bool?
+    attr_reader space: bool?
+    attr_reader single_quotation_mark: bool?
+    attr_reader backtick: bool?
+    attr_reader period: bool?
+    attr_reader comma: bool?
+    attr_reader a: bool?
+    attr_reader b: bool?
+    attr_reader c: bool?
+    attr_reader d: bool?
+    attr_reader e: bool?
+    attr_reader f: bool?
+    attr_reader g: bool?
+    attr_reader h: bool?
+    attr_reader i: bool?
+    attr_reader j: bool?
+    attr_reader k: bool?
+    attr_reader l: bool?
+    attr_reader m: bool?
+    attr_reader n: bool?
+    attr_reader o: bool?
+    attr_reader p: bool?
+    attr_reader q: bool?
+    attr_reader r: bool?
+    attr_reader s: bool?
+    attr_reader t: bool?
+    attr_reader u: bool?
+    attr_reader v: bool?
+    attr_reader w: bool?
+    attr_reader x: bool?
+    attr_reader y: bool?
+    attr_reader z: bool?
+    attr_reader forward_slash: bool?
+    attr_reader back_slash: bool?
+    attr_reader caps_lock: bool?
+    attr_reader f1: bool?
+    attr_reader f2: bool?
+    attr_reader f3: bool?
+    attr_reader f4: bool?
+    attr_reader f5: bool?
+    attr_reader f6: bool?
+    attr_reader f7: bool?
+    attr_reader f8: bool?
+    attr_reader f9: bool?
+    attr_reader f10: bool?
+    attr_reader f11: bool?
+    attr_reader f12: bool?
+    attr_reader print_screen: bool?
+    attr_reader scroll_lock: bool?
+    attr_reader pause: bool?
+    attr_reader insert: bool?
+    attr_reader home: bool?
+    attr_reader page_up: bool?
+    attr_reader end: bool?
+    attr_reader page_down: bool?
+    attr_reader left_arrow: bool?
+    attr_reader right_arrow: bool?
+    attr_reader up_arrow: bool?
+    attr_reader down_arrow: bool?
+    attr_reader num_lock: bool?
+    attr_reader kp_divide: bool?
+    attr_reader kp_multiply: bool?
+    attr_reader kp_minus: bool?
+    attr_reader kp_plus: bool?
+    attr_reader kp_enter: bool?
+    attr_reader kp_one: bool?
+    attr_reader kp_two: bool?
+    attr_reader kp_three: bool?
+    attr_reader kp_four: bool?
+    attr_reader kp_five: bool?
+    attr_reader kp_six: bool?
+    attr_reader kp_seven: bool?
+    attr_reader kp_eight: bool?
+    attr_reader kp_nine: bool?
+    attr_reader kp_zero: bool?
+    attr_reader kp_period: bool?
+    attr_reader kp_equals: bool?
+    attr_reader shift: bool?
+    attr_reader control: bool?
+    attr_reader alt: bool?
+    attr_reader meta: bool?
+    attr_reader shift_left: bool?
+    attr_reader shift_right: bool?
+    attr_reader control_left: bool?
+    attr_reader control_right: bool?
+    attr_reader alt_left: bool?
+    attr_reader alt_right: bool?
+    attr_reader meta_left: bool?
+    attr_reader meta_right: bool?
+    attr_reader ac_search: bool?
+    attr_reader ac_home: bool?
+    attr_reader ac_back: bool?
+    attr_reader ac_forward: bool?
+    attr_reader ac_stop: bool?
+    attr_reader ac_refresh: bool?
+    attr_reader ac_bookmarks: bool?
+    attr_reader w_scancode: bool?
+    attr_reader a_scancode: bool?
+    attr_reader s_scancode: bool?
+    attr_reader d_scancode: bool?
+
+    alias section_sign section
+    alias equal_sign equal
+    alias dollar_sign dollar
+    alias percent_sign percent
+    alias circumflex caret
+    alias less_than_sign less_than
+    alias greater_than_sign greater_than
+    alias left_shift shift_left
+    alias right_shift shift_right
+    alias option alt
+    alias option_left alt_left
+    alias option_right alt_right
+    alias left_alt alt_left
+    alias right_alt alt_right
+    alias left_option alt_left
+    alias right_option alt_right
+    alias command meta
+    alias command_left meta_left
+    alias command_right meta_right
+    alias left_meta meta_left
+    alias right_meta meta_right
+    alias left_command meta_left
+    alias right_command meta_right
+    alias ctrl control
+    alias left_control control_left
+    alias right_control control_right
+    alias left_ctrl control_left
+    alias right_ctrl control_right
+    alias minus hyphen
+    alias dash hyphen
+    alias pageup page_up
+    alias pagedown page_down
+    alias backslash back_slash
+    alias forwardslash forward_slash
+    alias capslock caps_lock
+    alias scrolllock scroll_lock
+    alias numlock num_lock
+    alias printscreen print_screen
+    alias break pause
+    alias left left_arrow
+    alias right right_arrow
+    alias up up_arrow
+    alias down down_arrow
+  end
+end

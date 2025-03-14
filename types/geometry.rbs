@@ -1,0 +1,161 @@
+module GTK
+  module Geometry
+    type point = { x: Numeric, y: Numeric } | [Numeric, Numeric]
+    type rect = { x: Numeric, y: Numeric, w: Numeric, h: Numeric, ?anchor_x: Float, ?anchor_y: Float }
+    type line = { x: Numeric, y: Numeric, x2: Numeric, y2: Numeric }
+    type circle = { x: Numeric, y: Numeric, radius: Numeric }
+    type vector2 = { x: Numeric, y: Numeric }
+
+    def inside_rect?: (rect outer, ?Float tolerance) -> bool
+
+    def intersects_rect?: (*untyped args) -> bool
+
+    def scale_rect_extended: (?percentage_x: Float, ?percentage_y: Float, ?anchor_x: Float, ?anchor_y: Float) -> rect
+
+    def scale_rect: (Float percentage, *Float anchors) -> rect
+
+    def angle_to: (point other_point) -> Float
+
+    def angle_from: (point other_point) -> Float
+
+    def point_inside_circle?: (point circle_center_point, ?Numeric? radius) -> bool
+
+    def center_inside_rect: (rect other_rect) -> rect
+
+    def center_inside_rect_x: (rect other_rect) -> rect
+
+    def center_inside_rect_y: (rect other_rect) -> rect
+
+    def anchor_rect: (Float anchor_x, Float anchor_y) -> rect
+
+    def angle_given_point: (point other_point) -> Float
+
+    def line_to_rect: (?min_w: Integer, ?min_h: Integer) -> rect
+
+    def rect_to_line: () -> line
+
+    def rect_center_point: () -> point
+
+    def self.rotate_point: (point point, Numeric angle, ?point? around) -> point
+
+    def self.cubic_bezier: (Float t, Numeric a, Numeric b, Numeric c, Numeric d) -> Numeric
+
+    def self.scale_rect: (rect rect, Float percentage, *Float anchors) -> rect
+
+    def self.rect_to_line: (rect rect) -> line
+
+    def self.center_inside_rect: (rect rect, rect other_rect) -> rect
+
+    def self.center_inside_rect_x: (rect rect, rect other_rect) -> rect
+
+    def self.center_inside_rect_y: (rect rect, rect other_rect) -> rect
+
+    def self.shift_line: (line line, Numeric x, Numeric y) -> line
+
+    def self.intersects_rect?: (*untyped args) -> bool
+
+    def self.line_y_intercept: (line line, ?replace_infinity: Numeric?) -> Numeric
+
+    def self.angle_delta: (Numeric angle_one, Numeric angle_two) -> Numeric
+
+    def self.angle_within_range?: (Numeric test_angle, Numeric target_angle, Numeric range) -> bool
+
+    def self.angle_between_lines: (line line_one, line line_two, ?replace_infinity: Numeric?) -> Float
+
+    def self.line_slope: (line line, ?replace_infinity: Numeric) -> Numeric
+
+    def self.line_rise_run: (line line) -> vector2
+
+    def self.ray_test: (point point, line line) -> (:on | :right | :left)
+
+    def self.line_to_rect: (line line, ?min_w: Integer, ?min_h: Integer) -> rect
+
+    def self.line_rect: (line line, ?min_w: Integer, ?min_h: Integer) -> rect
+
+    def self.ray_intersect: (line line_one, line line_two) -> (point | nil)
+
+    def self.line_intersect: (line line_one, line line_two) -> (point | nil)
+
+    def self.to_square: (Numeric size, Numeric x, Numeric y, ?Float anchor_x, ?Float? anchor_y) -> ::Array[Numeric]
+
+    def self.distance: (point point_one, point point_two) -> Float
+
+    def self.angle_turn_direction: (Numeric angle, Numeric target_angle) -> (-1 | 0 | 1)
+
+    def self.angle: (point start_point, point end_point) -> Float
+
+    def self.angle_from: (point start_point, point end_point) -> Float
+
+    def self.angle_to: (point start_point, point end_point) -> Float
+
+    def self.point_inside_circle?: (point point, point | circle circle_center_point, ?Numeric? radius) -> bool
+
+    def self.inside_rect?: (rect inner_rect, rect outer_rect, ?Float tolerance) -> bool?
+
+    def self.scale_rect_extended: (rect rect, ?percentage_x: Float?, ?percentage_y: Float?, ?anchor_x: Float?, ?anchor_y: Float?) -> rect
+
+    def self.rect_center_point: (rect rect) -> point
+
+    def self.line_center_point: (line line) -> point
+
+    def self.line_length: (line line) -> Float
+
+    def self.center: (rect | line rect_or_line) -> point
+
+    def self.rect_props: (rect r) -> rect
+
+    alias self.rect_normalize self.rect_props
+
+    def self.line_horizontal?: (line line) -> bool
+
+    def self.line_vertical?: (line line) -> bool
+
+    def self.line_angle: (line line) -> Float
+
+    def self.vec2_dot_product: (vector2 v1, vector2 v2) -> Float
+
+    def self.vec2_normalize: (vector2 v) -> vector2
+
+    def self.line_vec2: (line line) -> vector2
+
+    alias self.line_to_vec2 self.line_vec2
+
+    def self.vec2_magnitude: (vector2 v) -> Float
+
+    def self.distance_squared: (point p1, point p2) -> Float
+
+    def self.vec2_normal: (vector2 v) -> vector2
+
+    def self.circle_intersect_line?: (circle circle, line line) -> bool
+
+    def self.line_normal: (line line, point point) -> point
+
+    def self.rect_to_circle: (rect | circle rect_or_circle) -> circle
+
+    def self.rect?: (untyped shape) -> bool
+
+    def self.circle?: (untyped shape) -> bool
+
+    def self.intersect_circle?: (circle circle_one, circle circle_two) -> bool
+
+    def self.point_on_line?: (point point, line line) -> bool
+
+    def self.rect_navigate_left_right: (rect: rect, rects: Array[rect], ?left_right: Integer, ?using: (^(rect) -> rect)?, ?wrap: bool) -> rect
+
+    def self.rect_navigate_up_down: (rect: rect, rects: Array[rect], ?up_down: Integer, ?using: (^(rect) -> rect)?, ?wrap: bool) -> rect
+
+    def self.rect_navigate: (rect: rect, rects: Array[rect], ?left_right: Integer?, ?up_down: Integer?, ?directional_vector: vector2?, ?wrap_x: bool, ?wrap_y: bool, ?using: (^(rect) -> rect)?) -> rect
+
+    def self.find_intersect_rect: (rect rect, Array[rect] rects, ?Float tolerance) -> (rect | nil)
+
+    def self.find_all_intersect_rect: (rect rect, Array[rect] rects, ?Float tolerance) -> ::Array[rect]
+  end
+end
+
+class Hash[unchecked out K, unchecked out V]
+  include GTK::Geometry
+end
+
+class Array[unchecked out Elem]
+  include GTK::Geometry
+end

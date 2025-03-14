@@ -1,0 +1,38 @@
+module GTK
+  class Layout
+    def rect: (
+        ?row: Integer,
+        ?col: Integer,
+        ?w: Integer,
+        ?h: Integer,
+        ?row_from_bottom: Integer?,
+        ?col_from_right: Integer?,
+        ?max_width: Integer?,
+        ?max_height: Integer?,
+        ?dx: Integer,
+        ?dy: Integer,
+        ?include_row_gutter: bool,
+        ?include_col_gutter: bool,
+        ?merge: Hash[Symbol, untyped]?,
+        ?origin: Symbol,
+        ?safe_area: bool
+      ) -> {
+        x: Integer,
+        y: Integer,
+        w: Integer,
+        h: Integer,
+        center_x: Integer,
+        center_y: Integer,
+        center: {
+            x: Integer,
+            y: Integer,
+          }
+      }
+
+    def debug_primitives: (?invert_colors: bool) -> Array[untyped]
+
+    def landscape?: () -> bool
+
+    def portrait?: () -> bool
+  end
+end

@@ -1,0 +1,107 @@
+module GTK
+  class Outputs
+    attr_accessor width: Integer
+    attr_accessor height: Integer
+
+    alias w width
+    alias h height
+
+    attr_accessor background_color: [Integer, Integer, Integer]
+    attr_accessor clear_before_render: bool
+
+    attr_reader solids: SolidsOutputsArray
+    attr_reader sprites: SpritesOutputsArray
+    attr_reader lines: LinesOutputsArray
+    attr_reader labels: LabelsOutputsArray
+    attr_reader borders: BordersOutputsArray
+    attr_reader primitives: PrimitivesOutputsArray
+    attr_reader reserved: ReservedOutputsArray
+    attr_reader debug: DebugOutputsArray
+
+    attr_reader static_solids: StaticSolidsOutputsArray
+    attr_reader static_sprites: StaticSpritesOutputsArray
+    attr_reader static_lines: StaticLinesOutputsArray
+    attr_reader static_labels: StaticLabelsOutputsArray
+    attr_reader static_borders: StaticBordersOutputsArray
+    attr_reader static_primitives: StaticPrimitivesOutputsArray
+    attr_reader static_reserved: StaticReservedOutputsArray
+    attr_reader static_debug: StaticDebugOutputsArray
+
+    attr_reader sounds: Array[String | { path: String, ?gain: Float } | { input: String, ?gain: Float }]
+
+    attr_reader screenshots: SpritesOutputsArray
+
+    attr_reader a11y: Hash[String, untyped]
+
+    def can_screenshot?: () -> bool
+
+    def reset: () -> void
+
+    def clear: () -> void
+
+    include WatchLabels
+  end
+
+  class OutputsArray < Array[untyped]
+  end
+
+  module WatchLabels
+    def watch: (untyped object, ?label_style: Hash[Symbol, untyped]?, background_style: Hash[Symbol, untyped]?) -> void
+
+    def watch_ivars: (untyped object, ?label_style: Hash[Symbol, untyped]?, background_style: Hash[Symbol, untyped]?) -> void
+
+    def watch_attrs: (untyped object, ?label_style: Hash[Symbol, untyped]?, background_style: Hash[Symbol, untyped]?) -> void
+
+    def watch_fps: () -> void
+  end
+
+  class SolidsOutputsArray < OutputsArray
+  end
+
+  class StaticSolidsOutputsArray < OutputsArray
+  end
+
+  class SpritesOutputsArray < OutputsArray
+  end
+
+  class StaticSpritesOutputsArray < OutputsArray
+  end
+
+  class LabelsOutputsArray < OutputsArray
+  end
+
+  class StaticLabelsOutputsArray < OutputsArray
+  end
+
+  class BordersOutputsArray < OutputsArray
+  end
+
+  class StaticBordersOutputsArray < OutputsArray
+  end
+
+  class LinesOutputsArray < OutputsArray
+  end
+
+  class StaticLinesOutputsArray < OutputsArray
+  end
+
+  class ReservedOutputsArray < OutputsArray
+    include WatchLabels
+  end
+
+  class StaticReservedOutputsArray < OutputsArray
+  end
+
+  class DebugOutputsArray < OutputsArray
+    include WatchLabels
+  end
+
+  class StaticDebugOutputsArray < OutputsArray
+  end
+
+  class PrimitivesOutputsArray < OutputsArray
+  end
+
+  class StaticPrimitivesOutputsArray < OutputsArray
+  end
+end

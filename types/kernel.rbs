@@ -1,0 +1,6 @@
+module GTK
+  module Kernel
+    attr_reader tick_count: Integer
+    attr_reader global_tick_count: Integer
+  end
+end
