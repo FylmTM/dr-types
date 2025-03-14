@@ -106,9 +106,11 @@ Thanks to [owenbutler/dragonruby-yard-doc](https://github.com/owenbutler/dragonr
 
 ## TODO
 
+- [ ] Improve: State & Entities
 - [ ] Improve: Outputs::[] (render targets)
 - [ ] Improve: Outputs::screenshots
 - [ ] Improve: Outputs::shaders
-- [ ] Improve: State & Entities
+- [ ] Support: Layout::rect_group
+- [ ] Support: Layout::point
 - [ ] Support: macro - attr_sprite
 - [ ] Support: macro - attr_gtk

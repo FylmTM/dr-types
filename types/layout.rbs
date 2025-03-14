@@ -1,5 +1,15 @@
 module GTK
   class Layout
+
+    attr_reader row_count: Integer
+    attr_reader row_max_index: Integer
+    attr_reader col_count: Integer
+    attr_reader col_max_index: Integer
+    attr_reader gutter_height: Numeric
+    attr_reader gutter_width: Numeric
+    attr_reader cell_height: Numeric
+    attr_reader cell_width: Numeric
+
     def rect: (
         ?row: Integer,
         ?col: Integer,

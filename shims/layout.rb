@@ -2,8 +2,17 @@
 module GTK
   # Provides APIs for placing primitives on a virtual grid within the "safe area" across all platforms.
   # Useful for rendering static controls like buttons, menu items, configuration screens, etc.
-  # All functions are available globally via Layout.* or through args.layout
+  # All functions are available globally via Layout.* or through +args.layout+
   class Layout
+    attr_reader :row_count
+    attr_reader :row_max_index
+    attr_reader :col_count
+    attr_reader :col_max_index
+    attr_reader :gutter_height
+    attr_reader :gutter_width
+    attr_reader :cell_height
+    attr_reader :cell_width
+
     # Returns a Hash with properties x, y, w, h, and center (which contains a Hash with x, y).
     # The virtual grid is 12 rows by 24 columns (or 24 columns by 12 rows in portrait mode).
     #
