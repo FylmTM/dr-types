@@ -1,0 +1,85 @@
+module GTK
+  def self.solid: (
+      x: Numeric, y: Numeric,
+      w: Numeric, h: Numeric,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      ?blendmode_enum: Integer?
+    ) -> SolidsOutputsArray::solid
+
+  def self.sprite: (
+      x: Numeric, y: Numeric,
+      w: Numeric?, h: Numeric?,
+      path: String,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?flip_horizontally: bool?, ?flip_vertically: bool?,
+      ?angle: Numeric?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      ?angle_anchor_x: Numeric?, ?angle_anchor_y: Numeric?,
+      ?tile_x: Integer?, ?tile_y: Integer?, ?tile_w: Numeric?, ?tile_h: Numeric?,
+      ?source_x: Integer?, ?source_y: Integer?, ?source_w: Numeric?, ?source_h: Numeric?,
+      ?blendmode_enum: Integer?,
+      ?scale_quality_enum: Integer?,
+      ?x2: Numeric?, ?y2: Numeric?, ?x3: Numeric?, ?y3: Numeric?,
+      ?source_x2: Numeric?, ?source_y2: Numeric?, ?source_x3: Numeric?, ?source_y3: Numeric?,
+    ) -> SpritesOutputsArray::sprite
+
+  def self.sprite_triangle: (
+      x: Numeric, y: Numeric,
+      x2: Numeric, y2: Numeric,
+      x3: Numeric, y3: Numeric,
+      path: String,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?flip_horizontally: bool?, ?flip_vertically: bool?,
+      ?angle: Numeric?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      ?angle_anchor_x: Numeric?, ?angle_anchor_y: Numeric?,
+      ?tile_x: Integer?, ?tile_y: Integer?, ?tile_w: Numeric?, ?tile_h: Numeric?,
+      ?source_x: Integer?, ?source_y: Integer?,
+      ?source_x2: Numeric?, ?source_y2: Numeric?,
+      ?source_x3: Numeric?, ?source_y3: Numeric?,
+      ?blendmode_enum: Integer?,
+      ?scale_quality_enum: Integer?,
+    ) -> SpritesOutputsArray::sprite
+
+  def self.label: (
+      x: Numeric, y: Numeric,
+      text: String,
+      ?size_enum: Integer?, ?size_px: Numeric?,
+      ?alignment_enum: Integer?, ?vertical_alignment_enum: Integer?,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?font: String?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+    ) -> LabelsOutputsArray::label
+
+  def self.border: (
+      x: Numeric, y: Numeric,
+      w: Numeric, h: Numeric,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      ?blendmode_enum: Integer?
+    ) -> BordersOutputsArray::border
+
+  def self.line: (
+      x: Numeric, y: Numeric,
+      x2: Numeric, y2: Numeric,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?blendmode_enum: Integer?
+    ) -> LinesOutputsArray::line
+
+  def self.solid_primitive: (
+      x: Numeric, y: Numeric,
+      w: Numeric, h: Numeric,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      ?blendmode_enum: Integer?
+    ) -> SolidsOutputsArray::solid
+
+  def self.border_primitive: (
+      x: Numeric, y: Numeric,
+      w: Numeric, h: Numeric,
+      ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+      ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      ?blendmode_enum: Integer?
+    ) -> BordersOutputsArray::border
+end

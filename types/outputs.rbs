@@ -15,7 +15,6 @@ module GTK
     attr_reader labels: LabelsOutputsArray
     attr_reader borders: BordersOutputsArray
     attr_reader primitives: PrimitivesOutputsArray
-    attr_reader reserved: ReservedOutputsArray
     attr_reader debug: DebugOutputsArray
 
     attr_reader static_solids: StaticSolidsOutputsArray
@@ -24,7 +23,6 @@ module GTK
     attr_reader static_labels: StaticLabelsOutputsArray
     attr_reader static_borders: StaticBordersOutputsArray
     attr_reader static_primitives: StaticPrimitivesOutputsArray
-    attr_reader static_reserved: StaticReservedOutputsArray
     attr_reader static_debug: StaticDebugOutputsArray
 
     attr_reader sounds: Array[String | { path: String, ?gain: Float } | { input: String, ?gain: Float }]
@@ -42,9 +40,6 @@ module GTK
     include WatchLabels
   end
 
-  class OutputsArray < Array[untyped]
-  end
-
   module WatchLabels
     def watch: (untyped object, ?label_style: Hash[Symbol, untyped]?, background_style: Hash[Symbol, untyped]?) -> void
 
@@ -55,53 +50,98 @@ module GTK
     def watch_fps: () -> void
   end
 
-  class SolidsOutputsArray < OutputsArray
+  class SolidsOutputsArray < Array[solid | Array[untyped]]
+    type solid = {
+        x: Numeric, y: Numeric,
+        w: Numeric, h: Numeric,
+        ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+        ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+        ?blendmode_enum: Integer?
+      }
   end
 
-  class StaticSolidsOutputsArray < OutputsArray
+  class SpritesOutputsArray < Array[sprite | Array[untyped]]
+    type sprite = {
+        x: Numeric, y: Numeric,
+        w: Numeric?, h: Numeric?,
+        path: String,
+        ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+        ?flip_horizontally: bool?, ?flip_vertically: bool?,
+        ?angle: Numeric?,
+        ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+        ?angle_anchor_x: Numeric?, ?angle_anchor_y: Numeric?,
+        ?tile_x: Integer?, ?tile_y: Integer?, ?tile_w: Numeric?, ?tile_h: Numeric?,
+        ?source_x: Integer?, ?source_y: Integer?, ?source_w: Numeric?, ?source_h: Numeric?,
+        ?blendmode_enum: Integer?,
+        ?scale_quality_enum: Integer?,
+        ?x2: Numeric?, ?y2: Numeric?, ?x3: Numeric?, ?y3: Numeric?,
+        ?source_x2: Numeric?, ?source_y2: Numeric?, ?source_x3: Numeric?, ?source_y3: Numeric?,
+      }
   end
 
-  class SpritesOutputsArray < OutputsArray
+  class LabelsOutputsArray < Array[label | Array[untyped]]
+    type label = {
+        x: Numeric, y: Numeric,
+        text: String,
+        ?size_enum: Integer?, ?size_px: Numeric?,
+        ?alignment_enum: Integer?, ?vertical_alignment_enum: Integer?,
+        ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+        ?font: String?,
+        ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+      }
   end
 
-  class StaticSpritesOutputsArray < OutputsArray
+  class BordersOutputsArray < Array[border | Array[untyped]]
+    type border = {
+        x: Numeric, y: Numeric,
+        w: Numeric, h: Numeric,
+        ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+        ?anchor_x: Numeric?, ?anchor_y: Numeric?,
+        ?blendmode_enum: Integer?
+      }
   end
 
-  class LabelsOutputsArray < OutputsArray
+  class LinesOutputsArray < Array[line | Array[untyped]]
+    type line = {
+        x: Numeric, y: Numeric,
+        x2: Numeric, y2: Numeric,
+        ?r: Integer?, ?g: Numeric?, ?b: Numeric?, ?a: Numeric?,
+        ?blendmode_enum: Integer?
+      }
   end
 
-  class StaticLabelsOutputsArray < OutputsArray
+  class PrimitivesOutputsArray < Array[primitive]
+    type primitive = SpritesOutputsArray::sprite
+      | LabelsOutputsArray::label
+      | LinesOutputsArray::line
+      | SolidsOutputsArray::solid & { primitive_marker: :solid }
+      | BordersOutputsArray::border & { primitive_marker: :border }
   end
 
-  class BordersOutputsArray < OutputsArray
-  end
-
-  class StaticBordersOutputsArray < OutputsArray
-  end
-
-  class LinesOutputsArray < OutputsArray
-  end
-
-  class StaticLinesOutputsArray < OutputsArray
-  end
-
-  class ReservedOutputsArray < OutputsArray
+  class DebugOutputsArray < Array[debug]
     include WatchLabels
+
+    type debug = String | PrimitivesOutputsArray::primitive
   end
 
-  class StaticReservedOutputsArray < OutputsArray
+  class StaticSolidsOutputsArray < Array[SolidsOutputsArray::solid | Array[untyped]]
   end
 
-  class DebugOutputsArray < OutputsArray
-    include WatchLabels
+  class StaticSpritesOutputsArray < Array[SpritesOutputsArray::sprite | Array[untyped]]
   end
 
-  class StaticDebugOutputsArray < OutputsArray
+  class StaticLabelsOutputsArray < Array[LabelsOutputsArray::label | Array[untyped]]
   end
 
-  class PrimitivesOutputsArray < OutputsArray
+  class StaticBordersOutputsArray < Array[BordersOutputsArray::border | Array[untyped]]
   end
 
-  class StaticPrimitivesOutputsArray < OutputsArray
+  class StaticLinesOutputsArray < Array[LinesOutputsArray::line | Array[untyped]]
+  end
+
+  class StaticPrimitivesOutputsArray < Array[PrimitivesOutputsArray::primitive]
+  end
+
+  class StaticDebugOutputsArray < Array[DebugOutputsArray::debug]
   end
 end

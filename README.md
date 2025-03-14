@@ -5,7 +5,7 @@ for [DragonRuby Game Toolkit](https://dragonruby.org/).
 
 * RBS type definitions for DragonRuby
 * Ruby shims, with documentation
-* Typesafe* wrapper to some of the DragonRuby API (WIP)
+* Helpers to avoid some of the shortcoming of RBS support in RubyMine around hashes
 
 If this works in other editors/IDE, this is purely coincidental, but very nice!
 
@@ -27,18 +27,20 @@ If this works in other editors/IDE, this is purely coincidental, but very nice!
 Add types as a Git submodule to your project files:
 
 ```shell
-git submodule add https://github.com/FylmTM/dr-types.git mygame/.dr-types
+git submodule add https://github.com/FylmTM/dr-types.git mygame/app/.dr-types
 ```
 
 **Important:** Make sure to mark `docs` and `samples` from DragonRuby as excluded sources in RubyMine.
-Otherwise source that is shipped with DragonRuby itself will conflict with Ruby shims in this project.
+Otherwise, source that is shipped with DragonRuby itself will conflict with Ruby shims in this project.
 
 RubyMine should automatically pick up types from now on.
+
+_Note:_ While type directory can be located anywhere, in order to require helpers.rb it must be in `app` directory.
 
 **Update:**
 
 ```shell
-git submodule update --remote mygame/.dr-types
+git submodule update --remote mygame/app/.dr-types
 ```
 
 ### Main
@@ -63,9 +65,22 @@ def shutdown(args) end
 
 WIP.
 
-### Typesafe wrapper
+### Helpers
 
-WIP.
+Want IDE assist when creating objects for `args.outputs.*`? You can use helpers.
+
+```ruby
+require_relative ".dr-types/helpers"
+
+args.outputs.solids << GTK.solid(x: 100, y: 100, w: 100, h: 100, r: 255, g: 0, b: 0)
+args.outputs.labels << GTK.label(x: 50, y: 50, text: "Hello, world!")
+args.outputs.borders << GTK.border(x: 150, y: 150, w: 20, h: 20, r: 0, g: 255, b: 0)
+args.outputs.lines << GTK.line(x: 150, y: 150, x2: 300, y2: 300, r: 0, g: 0, b: 255)
+args.outputs.sprites << GTK.sprite(x: 250, y: 250, w: 100, h: 100, path: "dragonruby.png")
+args.outputs.sprites << GTK.sprite_triangle(x: 20, y: 20, x2: 60, y2: 20, x3: 40, y3: 60, path: "dragonruby.png")
+args.outputs.debug << GTK.solid_primitive(x: 400, y: 400, w: 100, h: 100, r: 255, g: 0, b: 0)
+args.outputs.debug << GTK.border_primitive(x: 600, y: 600, w: 100, h: 100, r: 255, g: 0, b: 0)
+```
 
 ## Background
 
@@ -86,13 +101,6 @@ Thanks to [owenbutler/dragonruby-yard-doc](https://github.com/owenbutler/dragonr
 
 ## TODO
 
-- [ ] Improve: Outputs::primitives
-- [ ] Improve: Outputs::debug
-- [ ] Improve: Outputs::solids
-- [ ] Improve: Outputs::borders
-- [ ] Improve: Outputs::sprites
-- [ ] Improve: Outputs::lines
-- [ ] Improve: Outputs::labels
 - [ ] Improve: Outputs::[] (render targets)
 - [ ] Improve: Outputs::screenshots
 - [ ] Improve: Outputs::shaders
@@ -100,5 +108,4 @@ Thanks to [owenbutler/dragonruby-yard-doc](https://github.com/owenbutler/dragonr
 - [ ] Support: macro - attr
 - [ ] Support: macro - attr_sprite
 - [ ] Support: macro - attr_gtk
-- [ ] Implement: Typesafe proxy - Outputs
 - [ ] Implement: Typesafe proxy - Audio

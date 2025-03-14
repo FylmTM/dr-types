@@ -38,7 +38,7 @@ module GTK
     #   r, g, b: RGB color values (0-255, default is 255 for each)
     #   a: Alpha/transparency (0-255, default is 255)
     #   anchor_x, anchor_y: Position anchors (0-1, default is 0 for both)
-    #   blendmode_enum: Blending mode (default is 1)
+    #   blendmode_enum: Blending mode, default 1 (0: none, 1: alpha, 2: additive, 3: modulo, 4: multiply)
     #
     # Array format:
     #   [x, y, width, height]
@@ -66,7 +66,7 @@ module GTK
     #   angle_anchor_x, angle_anchor_y: Rotation anchors (0-1)
     #   tile_x, tile_y, tile_w, tile_h: Define crop area (origin at top left)
     #   source_x, source_y, source_w, source_h: Define crop area (origin at bottom left)
-    #   blendmode_enum: Blending mode (0: none, 1: alpha, 2: additive, 3: modulo, 4: multiply)
+    #   blendmode_enum: Blending mode, default 1 (0: none, 1: alpha, 2: additive, 3: modulo, 4: multiply)
     #   scale_quality_enum: Scaling quality (0: nearest, 1: linear, 2: anti-alias)
     #
     # Triangle rendering:
@@ -89,7 +89,7 @@ module GTK
     #   x2, y2: End position coordinates
     #   r, g, b: RGB color values (0-255, default is 0 for each)
     #   a: Alpha/transparency (0-255, default is 255)
-    #   blendmode_enum: Blending mode
+    #   blendmode_enum: Blending mode, default 1 (0: none, 1: alpha, 2: additive, 3: modulo, 4: multiply)
     #
     # Array format:
     #   [x, y, x2, y2]
@@ -114,7 +114,7 @@ module GTK
     #   a: Alpha/transparency (0-255, default is 255)
     #   font: Path to font file (optional)
     #   anchor_x, anchor_y: Position anchors (0-1, defaults to alignment settings)
-    #   blendmode_enum: Blending mode
+    #   blendmode_enum: Blending mode, default 1 (0: none, 1: alpha, 2: additive, 3: modulo, 4: multiply)
     #
     # Array format:
     #   [x, y, text, size_enum, alignment_enum, r, g, b, a, font]
