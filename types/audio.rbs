@@ -1,5 +1,16 @@
 module GTK
-  class Audio < Hash[Symbol, Hash[Symbol, untyped]]
+  class Audio < Hash[Symbol, audioTrack]
+    type audioTrack = {
+        input: String | Array[untyped],
+        ?gain: Float?,
+        ?pitch: Float?,
+        ?paused: bool?,
+        ?looping: bool?,
+        ?x: Numeric?, ?y: Numeric?, ?z: Numeric?,
+        ?playtime: Float?,
+        ?playlength: Float?,
+      }
+
     attr_accessor volume: Float
   end
 end

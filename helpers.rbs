@@ -82,4 +82,13 @@ module GTK
       ?anchor_x: Numeric?, ?anchor_y: Numeric?,
       ?blendmode_enum: Integer?
     ) -> BordersOutputsArray::border
+
+  def self.sound: (
+      input: String,
+      ?gain: Float?,
+      ?pitch: Float?,
+      ?paused: bool?,
+      ?looping: bool?,
+      ?x: Numeric?, ?y: Numeric?, ?z: Numeric?,
+    ) -> Audio::audioTrack
 end

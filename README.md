@@ -80,6 +80,10 @@ args.outputs.sprites << GTK.sprite(x: 250, y: 250, w: 100, h: 100, path: "dragon
 args.outputs.sprites << GTK.sprite_triangle(x: 20, y: 20, x2: 60, y2: 20, x3: 40, y3: 60, path: "dragonruby.png")
 args.outputs.debug << GTK.solid_primitive(x: 400, y: 400, w: 100, h: 100, r: 255, g: 0, b: 0)
 args.outputs.debug << GTK.border_primitive(x: 600, y: 600, w: 100, h: 100, r: 255, g: 0, b: 0)
+
+if args.inputs.mouse.click
+  args.audio[:note] = GTK.sound(input: "sounds/A3.wav", x: 1, y: 1, z: 1)
+end
 ```
 
 ## Background
@@ -93,6 +97,7 @@ Creation process looked roughly like this:
 5. Then LLM was used to generate Ruby shims from RBS types
 6. Then LLM was used to add YARD documentation to generated Ruby shims
 7. And one final review of generated Ruby code & documentation.
+8. Write helpers to help with workflow
 
 Types here might have functionality that is not documented explicitly, but was rather deduced based on
 OSS code & samples.
@@ -105,7 +110,5 @@ Thanks to [owenbutler/dragonruby-yard-doc](https://github.com/owenbutler/dragonr
 - [ ] Improve: Outputs::screenshots
 - [ ] Improve: Outputs::shaders
 - [ ] Improve: State & Entities
-- [ ] Support: macro - attr
 - [ ] Support: macro - attr_sprite
 - [ ] Support: macro - attr_gtk
-- [ ] Implement: Typesafe proxy - Audio
