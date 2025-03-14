@@ -24,7 +24,7 @@ If this works in other editors/IDE, this is purely coincidental, but very nice!
 Clone types anywhere into your project as a submodule (e.g. project root):
 
 ```shell
-git clone [repo_url] .dr-types
+git clone https://github.com/FylmTM/dr-types.git mygame/.dr-types
 ```
 
 **Important:** Make sure to mark `docs` and `samples` as excluded sources in RubyMine.<br>
