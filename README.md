@@ -15,23 +15,31 @@ If this works in other editors/IDE, this is purely coincidental, but very nice!
 <tr>
 <td><img src="docs/autocomplete.png"  alt="autocomplete"></td>
 <td><img src="docs/params_hint.png"  alt="params hint"></td>
+</tr>
+<tr>
+<td><img src="docs/documentation.png"  alt="type checking"></td>
 <td><img src="docs/type_checking.png"  alt="type checking"></td>
 </tr>
 </table>
 
 ## Usage
 
-Clone types anywhere into your project as a submodule (e.g. project root):
+Add types as a Git submodule to your project files:
 
 ```shell
-git clone https://github.com/FylmTM/dr-types.git mygame/.dr-types
+git submodule add https://github.com/FylmTM/dr-types.git mygame/.dr-types
 ```
 
-**Important:** Make sure to mark `docs` and `samples` as excluded sources in RubyMine.<br>
+**Important:** Make sure to mark `docs` and `samples` from DragonRuby as excluded sources in RubyMine.
 Otherwise source that is shipped with DragonRuby itself will conflict with Ruby shims in this project.
 
-Consider whether you want to add types to `.gitignore`.<br>
-I am keeping mines in repo as submodule, to make it easy to modify & update them.
+RubyMine should automatically pick up types from now on.
+
+**Update:**
+
+```shell
+git submodule update --remote mygame/.dr-types
+```
 
 ### Main
 
@@ -39,20 +47,16 @@ Add `@param args [GTK::Args]` YARD annotation to your top-level lifecycle functi
 
 ```ruby
 # @param args [GTK::Args]
-def tick(args)
-end
+def tick(args) end
 
 # @param args [GTK::Args]
-def boot(args)
-end
+def boot(args) end
 
 # @param args [GTK::Args]
-def reset(args)
-end
+def reset(args) end
 
 # @param args [GTK::Args]
-def shutdown(args)
-end
+def shutdown(args) end
 ```
 
 ### State
