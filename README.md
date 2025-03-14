@@ -86,19 +86,19 @@ Thanks to [owenbutler/dragonruby-yard-doc](https://github.com/owenbutler/dragonr
 
 ## TODO
 
-[ ] Improve: Outputs::primitives
-[ ] Improve: Outputs::debug
-[ ] Improve: Outputs::solids
-[ ] Improve: Outputs::borders
-[ ] Improve: Outputs::sprites
-[ ] Improve: Outputs::lines
-[ ] Improve: Outputs::labels
-[ ] Improve: Outputs::[] (render targets)
-[ ] Improve: Outputs::screenshots
-[ ] Improve: Outputs::shaders
-[ ] Improve: State & Entities
-[ ] Support: macro - attr
-[ ] Support: macro - attr_sprite
-[ ] Support: macro - attr_gtk
-[ ] Implement: Typesafe proxy - Outputs
-[ ] Implement: Typesafe proxy - Audio
+- [ ] Improve: Outputs::primitives
+- [ ] Improve: Outputs::debug
+- [ ] Improve: Outputs::solids
+- [ ] Improve: Outputs::borders
+- [ ] Improve: Outputs::sprites
+- [ ] Improve: Outputs::lines
+- [ ] Improve: Outputs::labels
+- [ ] Improve: Outputs::[] (render targets)
+- [ ] Improve: Outputs::screenshots
+- [ ] Improve: Outputs::shaders
+- [ ] Improve: State & Entities
+- [ ] Support: macro - attr
+- [ ] Support: macro - attr_sprite
+- [ ] Support: macro - attr_gtk
+- [ ] Implement: Typesafe proxy - Outputs
+- [ ] Implement: Typesafe proxy - Audio
