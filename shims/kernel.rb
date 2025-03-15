@@ -3,7 +3,9 @@ module GTK
   # Kernel in the DragonRuby Runtime has patches for how standard out is handled
   # and also contains a unit of time in games called a tick.
   module Kernel
-    # Returns the current tick of the game. This value is reset if you call $gtk.reset.
+    # Returns the current tick of the game.
+    # Begins at 0 when the game is first started, or restarted via ~$gtk.reset~.
+    # Accessible via ~args.state.tick_count~, ~args.tick_count~, and even ~Kernel.tick_count~.
     #
     #   def tick args
     #     args.outputs.labels << {

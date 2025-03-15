@@ -115,6 +115,19 @@ module GTK
     # Represents the user's mouse. Access via +args.inputs.mouse+.
     attr_reader :mouse
 
+    # Returns the current tick of the game.
+    # Begins at 0 when the game is first started, or restarted via ~$gtk.reset~.
+    # Accessible via ~args.state.tick_count~, ~args.tick_count~, and even ~Kernel.tick_count~.
+    #
+    #   def tick args
+    #     args.outputs.labels << {
+    #       x: 640,
+    #       y: 360,
+    #       text: "current tick count is: #{args.tick_count}"
+    #     }
+    #   end
+    attr_reader :tick_count
+
     # Returns mouse click point.
     attr_reader :click
 

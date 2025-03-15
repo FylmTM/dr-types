@@ -16,6 +16,8 @@ module GTK
     attr_reader fn: Fn
     attr_reader string: singleton(String)
 
+    attr_reader tick_count: Integer
+
     attr_reader state: State
     attr_reader temp_state: TempState
 
