@@ -1,7 +1,5 @@
 # noinspection RubyUnusedLocalVariable
 module GTK
-  include Runtime
-
   # The GTK::Runtime class is the core of DragonRuby.
   #
   # All functions are available through `$gtk`, `GTK`, or inside of the `tick` method through `args`:
@@ -65,7 +63,7 @@ module GTK
   end
 
   module RuntimeBenchmarks
-    def self.benchmark(seconds: nil, iterations: nil, **benchmarks) end
+    def benchmark(seconds: nil, iterations: nil, **benchmarks) end
   end
 
   module RuntimeDeveloperSupport
@@ -534,4 +532,20 @@ module GTK
     def stop_replay
     end
   end
+
+  extend TopLevelFunctions
+  extend RuntimeFFI
+  extend RuntimeBenchmarks
+  extend RuntimeDeveloperSupport
+  extend RuntimeDownloadStb
+  extend RuntimeDraw
+  extend RuntimeFramerate
+  extend RuntimeNotification
+  extend RuntimePlatform
+  extend RuntimeWindow
+  extend RuntimeEnvironmentAndUtility
+  extend RuntimeSerde
+  extend RuntimeFileIO
+  extend RuntimeNetworkIO
+  extend RuntimeRecording
 end

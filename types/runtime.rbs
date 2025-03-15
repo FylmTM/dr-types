@@ -1,6 +1,4 @@
 module GTK
-  include Runtime
-
   module Runtime
     include TopLevelFunctions
     include RuntimeFFI
@@ -36,7 +34,7 @@ module GTK
   end
 
   module RuntimeBenchmarks
-    def self.benchmark: (?seconds: Numeric?, ?iterations: Integer?, **^() -> void benchmarks) -> Hash[Symbol, {
+    def benchmark: (?seconds: Numeric?, ?iterations: Integer?, **^() -> void benchmarks) -> Hash[Symbol, {
           name: Symbol,
           iterations: Integer,
           time: Float,
@@ -336,4 +334,20 @@ module GTK
 
     def stop_replay: () -> void
   end
+
+  extend TopLevelFunctions
+  extend RuntimeFFI
+  extend RuntimeBenchmarks
+  extend RuntimeDeveloperSupport
+  extend RuntimeDownloadStb
+  extend RuntimeDraw
+  extend RuntimeFramerate
+  extend RuntimeNotification
+  extend RuntimePlatform
+  extend RuntimeWindow
+  extend RuntimeEnvironmentAndUtility
+  extend RuntimeSerde
+  extend RuntimeFileIO
+  extend RuntimeNetworkIO
+  extend RuntimeRecording
 end
