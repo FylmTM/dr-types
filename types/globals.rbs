@@ -1,4 +1,3 @@
-Kernel: singleton(GTK::Kernel)
 Easing: singleton(GTK::Easing)
 Geometry: singleton(GTK::Geometry)
 Grid: GTK::Grid

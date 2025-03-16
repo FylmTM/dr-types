@@ -1,4 +1,3 @@
-Kernel = GTK::Kernel
 Easing = GTK::Easing
 Geometry = GTK::Geometry
 Grid = GTK::Grid.new

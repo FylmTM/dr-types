@@ -1,6 +1,5 @@
-module GTK
-  module Kernel
-    attr_reader tick_count: Integer
-    attr_reader global_tick_count: Integer
-  end
+module Kernel
+  def self.tick_count: () -> Integer
+
+  def self.global_tick_count: () -> Integer
 end
