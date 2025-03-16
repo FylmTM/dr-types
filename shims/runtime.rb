@@ -445,7 +445,7 @@ module GTK
 
     def get_pixels(file) end
 
-    def request_quite
+    def request_quit
     end
 
     def quit_request?

@@ -81,7 +81,7 @@ module GTK
 
     def argv: () -> String
 
-    def cli_arguments: () -> Hash[String, String]
+    def cli_arguments: () -> Hash[Symbol, String]
 
     def get_relative_game_dir: () -> String
 
@@ -244,7 +244,7 @@ module GTK
 
     def get_pixels: (String file) -> { w: Integer, h: Integer, pixels: Array[Integer] }
 
-    def request_quite: () -> void
+    def request_quit: () -> void
 
     def quit_request?: () -> void
 
