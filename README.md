@@ -24,23 +24,23 @@ If this works in other editors/IDE, this is purely coincidental, but very nice!
 
 ## Usage
 
-Add types as a Git submodule to your project files:
+Add types as a Git submodule somewhere to your project files:
 
 ```shell
-git submodule add https://github.com/FylmTM/dr-types.git mygame/app/.dr-types
+git submodule add https://github.com/FylmTM/dr-types.git dr-types
 ```
 
-**Important:** Make sure to mark `docs` and `samples` from DragonRuby as excluded sources in RubyMine.
+RubyMine should automatically pick up types.
+
+**Important #1:** Do not add submodule to `mygame/` directory, otherwise this will lead to types being included in final build.
+
+**Important #2:** Make sure to mark `docs` and `samples` from DragonRuby as excluded sources in RubyMine.
 Otherwise, source that is shipped with DragonRuby itself will conflict with Ruby shims in this project.
-
-RubyMine should automatically pick up types from now on.
-
-_Note:_ While type directory can be located anywhere, in order to require helpers.rb it must be in `app` directory.
 
 **Update:**
 
 ```shell
-git submodule update --remote mygame/app/.dr-types
+git submodule update --remote dr-types
 ```
 
 ### Main
@@ -63,14 +63,33 @@ def shutdown(args) end
 
 ### State
 
-WIP.
+Want to get types for your object in state?<br>
+Create `mygame/app/state.rb`
+
+```
+module GTK
+  module State
+    # @return [Player]
+    attr_accessor :player
+  end
+end
+
+class Player
+  # @return [Integer]
+  attr_accessor :x
+  # @return [Integer]
+  attr_accessor :y
+end
+```
+
 
 ### Helpers
 
-Want IDE assist when creating objects for `args.outputs.*`? You can use helpers.
+Want IDE assist when creating objects for `args.outputs.*`? You can use helpers.<br>
+Copy `dr-types/helpers` directory into your game folder, e.g. `mygame/lib/helpers`.
 
 ```ruby
-require_relative ".dr-types/helpers"
+require "lib/helpers/helpers.rb"
 
 args.outputs.solids << GTK.solid(x: 100, y: 100, w: 100, h: 100, r: 255, g: 0, b: 0)
 args.outputs.labels << GTK.label(x: 50, y: 50, text: "Hello, world!")
@@ -80,10 +99,7 @@ args.outputs.sprites << GTK.sprite(x: 250, y: 250, w: 100, h: 100, path: "dragon
 args.outputs.sprites << GTK.sprite_triangle(x: 20, y: 20, x2: 60, y2: 20, x3: 40, y3: 60, path: "dragonruby.png")
 args.outputs.debug << GTK.solid_primitive(x: 400, y: 400, w: 100, h: 100, r: 255, g: 0, b: 0)
 args.outputs.debug << GTK.border_primitive(x: 600, y: 600, w: 100, h: 100, r: 255, g: 0, b: 0)
-
-if args.inputs.mouse.click
-  args.audio[:note] = GTK.sound(input: "sounds/A3.wav", x: 1, y: 1, z: 1)
-end
+args.audio[:note] = GTK.sound(input: "sounds/A3.wav", x: 1, y: 1, z: 1)
 ```
 
 ## Background
@@ -106,7 +122,6 @@ Thanks to [owenbutler/dragonruby-yard-doc](https://github.com/owenbutler/dragonr
 
 ## TODO
 
-- [ ] Improve: State & Entities
 - [ ] Improve: Outputs::[] (render targets)
 - [ ] Improve: Outputs::screenshots
 - [ ] Improve: Outputs::shaders
