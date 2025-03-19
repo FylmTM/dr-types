@@ -18,7 +18,7 @@ module GTK
   class Entity
     include Geometry
 
-    attr_reader entity_id: Fixnum
+    attr_reader entity_id: Integer
     attr_accessor entity_type: Symbol
     attr_reader created_at: Integer
     attr_reader created_at_elapsed: Integer
