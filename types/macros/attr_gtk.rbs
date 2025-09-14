@@ -34,11 +34,11 @@ module AttrGTK
 
   @layout: GTK::Layout
 
-  @easing: untyped
+  @easing: GTK::Easing
 
-  @audio: untyped
+  @audio: GTK::Audio
 
-  @events: untyped
+  @events: GTK::Events
 
   @cvars: Hash[Symbol, untyped]
 
@@ -68,11 +68,11 @@ module AttrGTK
   
   def layout: () -> GTK::Layout
   
-  def easing: () -> untyped
+  def easing: () -> GTK::Easing
   
-  def audio: () -> untyped
+  def audio: () -> GTK::Audio
   
-  def events: () -> untyped
+  def events: () -> GTK::Events
   
   def cvars: () -> Hash[Symbol, untyped]
   
